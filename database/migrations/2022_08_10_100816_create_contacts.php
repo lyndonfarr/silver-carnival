@@ -17,6 +17,7 @@ class CreateContacts extends Migration
             $table->string('description')->nullable();
             $table->string('nationality')->nullable();
             $table->date('dob')->nullable();
+            $table->longText('notes')->nullable();
             $table->timestamps();
         });
     }
