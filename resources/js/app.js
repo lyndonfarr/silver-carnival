@@ -27,12 +27,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import Form from './components/Contact/Form.vue';
-
 const app = new Vue({
     el: '#app',
 
     components: {
-        ContactForm: Form,
+        
     },
 });
