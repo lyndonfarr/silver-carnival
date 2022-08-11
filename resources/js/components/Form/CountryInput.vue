@@ -1,21 +1,26 @@
 <template>
     <div class="form-group col-md-4">
         <label
-            :for="name"
+            :for="`country_input_${name}`"
             v-text="label"
         ></label>
         <select
-            :id="name"
-            :name="name"
             class="form-control"
+            :id="`country_input_${name}`"
+            v-model="country"
         >
-            <option selected>Select {{ label }}</option>
             <option
                 v-for="country in countries"
                 :key="country"
                 v-text="country"
             ></option>
         </select>
+        <input
+            type="text"
+            hidden
+            :name="name"
+            :value="country"
+        >
     </div>
 </template>
 
@@ -30,10 +35,16 @@ export default {
             required: true,
             type: String,
         },
+        value: {
+            default: '',
+            required: false,
+            type: String,
+        },
     },
     data() {
         return {
             countries: [],
+            country: `${this.value}`,
         }
     },
     created() {
