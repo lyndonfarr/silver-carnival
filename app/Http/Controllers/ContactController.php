@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 
@@ -17,9 +18,22 @@ class ContactController extends Controller
         return view('contact.create');
     }
 
-    public function store(): View
+    public function store(Request $request): array
     {
-        
+        $contact = Contact::create([
+            'description' => $request->description,
+            'dob' => $request->dob,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'middle_names' => $request->middle_names,
+            'nationality' => $request->nationality,
+            'nickname' => $request->nickname,
+            'notes' => $request->notes,
+        ]);
+
+        return [
+            'contact_id' => $contact->id,
+        ];
     }
 
     // public function show()
