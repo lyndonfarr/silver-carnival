@@ -1,8 +1,15 @@
 <template>
     <div class="form-group col-md-4">
-        <label for="nationality">Nationality</label>
-        <select id="nationality" name="nationality" class="form-control">
-            <option selected>Select Nationality</option>
+        <label
+            :for="name"
+            v-text="label"
+        ></label>
+        <select
+            :id="name"
+            :name="name"
+            class="form-control"
+        >
+            <option selected>Select {{ label }}</option>
             <option
                 v-for="country in countries"
                 :key="country"
@@ -14,6 +21,16 @@
 
 <script>
 export default {
+    props: {
+        label: {
+            required: true,
+            type: String,
+        },
+        name: {
+            required: true,
+            type: String,
+        },
+    },
     data() {
         return {
             countries: [],
