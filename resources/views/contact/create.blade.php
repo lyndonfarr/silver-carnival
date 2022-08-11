@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <form>
+    <form method="POST" action="{{url('contacts')}}">
+        @csrf
         <div class="card">
             <div class="card-header">Create Contact</div>
             <div class="card-body">
