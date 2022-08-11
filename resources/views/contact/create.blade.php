@@ -25,25 +25,30 @@
                 <div class="form-row">
                     <textarea-input
                         class="col-md-5"
-                        name="description"
                         label="Description"
+                        name="description"
                     ></textarea-input>
                     <textarea-input
                         class="col-md-7"
-                        name="notes"
                         label="Notes"
+                        name="notes"
                     ></textarea-input>
                 </div>
                 <div class="form-row">
-                    <nationality-input></nationality-input>
+                    <country-input
+                        label="Nationality"
+                        name="nationality"
+                    ></country-input>
                     <text-input
                         class="col-md-4"
-                        name="nickname"
                         label="Nickname"
+                        name="nickname"
                     ></text-input>
-                    <div class="form-group col-md-4">
-                        DOB
-                    </div>
+                    <date-input
+                        class="col-md-4"
+                        label="Date of Birth"
+                        name="dob"
+                    ></date-input>
                 </div>
             </div>
             <div class="card-footer">
