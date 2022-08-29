@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Contact;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreContact extends FormRequest
+class Store extends FormRequest
 {
     public function authorize(): bool
     {
