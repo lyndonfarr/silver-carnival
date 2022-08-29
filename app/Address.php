@@ -3,12 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Address extends Model
 {
-    public function contact(): BelongsTo
+    protected $fillable = [
+        'city',
+        'country',
+        'line_1',
+        'line_2',
+        'post_code',
+        'state',
+    ];
+
+    public function contacts(): BelongsToMany
     {
-        return $this->belongsTo(Contact::class);
+        return $this->belongsToMany(Contact::class);
     }
 }

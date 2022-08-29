@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Contact extends Model
 {
@@ -18,9 +19,9 @@ class Contact extends Model
         'notes',
     ];
 
-    public function addresses(): HasMany
+    public function addresses(): BelongsToMany
     {
-        return $this->hasMany(Address::class);
+        return $this->belongsToMany(Address::class);
     }
 
     public function phoneNumbers(): HasMany
