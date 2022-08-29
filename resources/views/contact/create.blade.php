@@ -8,48 +8,19 @@
             <div class="card-body">
                 <div class="form-row">
                     <text-input
-                        class="col-md-4"
-                        label="First Name"
-                        name="first_name"
-                    ></text-input>
-                    <text-input
-                        class="col-md-4"
-                        label="Middle Names"
-                        name="middle_names"
-                    ></text-input>
-                    <text-input
-                        class="col-md-4"
-                        label="Last Name"
-                        name="last_name"
+                        class="col-md-12"
+                        label="Name"
+                        name="name"
+                        no-label="true"
                     ></text-input>
                 </div>
                 <div class="form-row">
                     <textarea-input
-                        class="col-md-5"
-                        label="Description"
-                        name="description"
-                    ></textarea-input>
-                    <textarea-input
-                        class="col-md-7"
+                        class="col-md-12"
                         label="Notes"
                         name="notes"
+                        no-label="true"
                     ></textarea-input>
-                </div>
-                <div class="form-row">
-                    <country-input
-                        label="Nationality"
-                        name="nationality"
-                    ></country-input>
-                    <text-input
-                        class="col-md-4"
-                        label="Nickname"
-                        name="nickname"
-                    ></text-input>
-                    <date-input
-                        class="col-md-4"
-                        label="Date of Birth"
-                        name="dob"
-                    ></date-input>
                 </div>
             </div>
             <div class="card-footer">
