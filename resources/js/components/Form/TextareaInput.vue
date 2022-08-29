@@ -2,6 +2,7 @@
     <div class="form-group">
         <label
             :for="name"
+            v-if="!noLabel"
             v-text="label"
         ></label>
         <textarea
@@ -25,6 +26,11 @@ export default {
         name: {
             required: true,
             type: String,
+        },
+        noLabel: {
+            default: false,
+            required: false,
+            type: Boolean,
         },
     },
 }
