@@ -11,7 +11,7 @@
                         class="col-md-12"
                         label="Name"
                         name="name"
-                        no-label="true"
+                        :no-label="true"
                     ></text-input>
                 </div>
                 <div class="form-row">
@@ -19,7 +19,7 @@
                         class="col-md-12"
                         label="Notes"
                         name="notes"
-                        no-label="true"
+                        :no-label="true"
                     ></textarea-input>
                 </div>
             </div>
