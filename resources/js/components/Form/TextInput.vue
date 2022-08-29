@@ -16,6 +16,8 @@
 
 <script>
 export default {
+    name: 'TextInput',
+
     props: {
         label: {
             required: true,

@@ -20,6 +20,8 @@
 import { BFormDatepicker } from 'bootstrap-vue';
 
 export default {
+    name: 'DateInput',
+
     components: {
         BFormDatepicker,
     },

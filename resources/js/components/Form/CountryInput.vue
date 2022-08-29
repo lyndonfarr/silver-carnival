@@ -26,6 +26,8 @@
 
 <script>
 export default {
+    name: 'CountryInput',
+
     props: {
         label: {
             required: true,
@@ -41,12 +43,14 @@ export default {
             type: String,
         },
     },
+
     data() {
         return {
             countries: [],
             country: `${this.value}`,
         }
     },
+    
     created() {
         axios
             .get(`https://restcountries.com/v3.1/all?fields=name`)
