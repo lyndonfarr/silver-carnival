@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
+use App\Http\Requests\Contact\Store;
+use Illuminate\Http\RedirectResponse;
 
 class ContactController extends Controller
 {
@@ -18,7 +19,7 @@ class ContactController extends Controller
         return view('contact.create');
     }
 
-    public function store(Request $request): array
+    public function store(Store $request): RedirectResponse
     {
         $contact = Contact::create([
             'description' => $request->description,
@@ -31,9 +32,7 @@ class ContactController extends Controller
             'notes' => $request->notes,
         ]);
 
-        return [
-            'contact_id' => $contact->id,
-        ];
+        return redirect()->action('AddressController@create', ['contact_id' => [$contact->id]]);
     }
 
     // public function show()
