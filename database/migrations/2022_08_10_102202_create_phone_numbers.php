@@ -10,7 +10,7 @@ class CreatePhoneNumbers extends Migration
     {
         Schema::create('phone_numbers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('contact_id')->index();
+            $table->unsignedBigInteger('contact_id');
             $table->foreign('contact_id')->references('id')->on('contacts');
             $table->string('prefix', 5);
             $table->integer('number');
