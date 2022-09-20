@@ -9,8 +9,10 @@
             type="text"
             class="form-control"
             :id="name"
+            @input="emitInput"
             :name="name"
             :placeholder="label"
+            :value="value"
         >
     </div>
 </template>
@@ -32,6 +34,17 @@ export default {
             default: false,
             required: false,
             type: Boolean,
+        },
+        value: {
+            default: '',
+            required: false,
+            type: String,
+        },
+    },
+
+    methods: {
+        emitInput(e) {
+            this.$emit('input', e.target.value);
         },
     },
 }
