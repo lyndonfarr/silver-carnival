@@ -9,6 +9,7 @@ import Multiselect from 'vue-multiselect';
 
 import CountryInput from './components/Form/CountryInput.vue';
 import DateInput from './components/Form/DateInput.vue';
+import PhoneInput from './components/Form/PhoneInput.vue';
 import TextareaInput from './components/Form/TextareaInput.vue';
 import TextInput from './components/Form/TextInput.vue';
 
@@ -25,6 +26,7 @@ const app = new Vue({
     components: {
         CountryInput,
         DateInput,
+        PhoneInput,
         TextareaInput,
         TextInput,
         ValueStorage,
