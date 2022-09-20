@@ -14,13 +14,14 @@ class Store extends FormRequest
     public function rules(): array
     {
         return [
-            'description' => 'max:255',
-            'dob' => 'date_format:Y-m-d|before:now',
-            'first_name' => 'required|max:255',
-            'last_name' => 'max:255',
-            'middle_names' => 'max:255',
-            'nationality' => 'max:255',
-            'nickname' => 'max:255',
+            // 'description' => 'max:255',
+            // 'dob' => 'date_format:Y-m-d|before:now',
+            // 'first_name' => 'required|max:255',
+            // 'last_name' => 'max:255',
+            // 'middle_names' => 'max:255',
+            // 'nationality' => 'max:255',
+            // 'nickname' => 'max:255',
+            'name' => 'required|max:255',
             'notes' => 'max:4095',
         ];
     }

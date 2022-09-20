@@ -15,6 +15,14 @@
                     ></text-input>
                 </div>
                 <div class="form-row">
+                    <phone-input
+                        class="col-md-12"
+                        label="Phone"
+                        name="phone"
+                        :no-label="true"
+                    ></phone-input>
+                </div>
+                <div class="form-row">
                     <textarea-input
                         class="col-md-12"
                         label="Notes"

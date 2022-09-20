@@ -21,16 +21,30 @@ class ContactController extends Controller
 
     public function store(Store $request): RedirectResponse
     {
-        $contact = Contact::create([
-            'description' => $request->description,
-            'dob' => $request->dob,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'middle_names' => $request->middle_names,
-            'nationality' => $request->nationality,
-            'nickname' => $request->nickname,
-            'notes' => $request->notes,
-        ]);
+        $name = $request->input('name');
+        $name = trim($name);
+        $name = explode(' ', $name);
+        
+        $contact['first_name'] = array_shift($name);
+
+        if (count($name)) {
+            $contact['last_name'] = array_pop($name);
+        }
+
+        if (count($name)) {
+            $contact['middle_names'] = join($name, ' ');
+        }
+
+        // $contact = Contact::create([
+        //     'description' => $request->description,
+        //     'dob' => $request->dob,
+        //     'first_name' => $request->first_name,
+        //     'last_name' => $request->last_name,
+        //     'middle_names' => $request->middle_names,
+        //     'nationality' => $request->nationality,
+        //     'nickname' => $request->nickname,
+        //     'notes' => $request->notes,
+        // ]);
 
         return redirect()->action('AddressController@create', ['contact_id' => [$contact->id]]);
     }
