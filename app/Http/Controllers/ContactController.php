@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 use App\Http\Requests\Contact\Store;
 use Illuminate\Http\RedirectResponse;
 
@@ -35,6 +36,26 @@ class ContactController extends Controller
             $contact['middle_names'] = join($name, ' ');
         }
 
+        $contact = Contact::create(array_merge($contact, [
+            'notes' => $request->notes,
+        ]));
+
+        return redirect()->action('ContactController@edit', [$contact->id]);
+    }
+
+    // public function show()
+    // {
+
+    // }
+
+    public function edit(Request $request, int $id): View
+    {
+        $contact = Contact::findOrFail($id);
+        return view('contact.edit')->with(compact('contact'));
+    }
+
+    // public function update()
+    // {
         // $contact = Contact::create([
         //     'description' => $request->description,
         //     'dob' => $request->dob,
@@ -45,23 +66,6 @@ class ContactController extends Controller
         //     'nickname' => $request->nickname,
         //     'notes' => $request->notes,
         // ]);
-
-        return redirect()->action('AddressController@create', ['contact_id' => [$contact->id]]);
-    }
-
-    // public function show()
-    // {
-
-    // }
-
-    // public function edit()
-    // {
-
-    // }
-
-    // public function update()
-    // {
-
     // }
 
     // public function destroy()
