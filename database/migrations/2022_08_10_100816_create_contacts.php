@@ -19,7 +19,6 @@ class CreateContacts extends Migration
             $table->string('last_name')->nullable();
             $table->string('middle_names')->nullable();
             $table->string('nickname')->nullable();
-            $table->string('description')->nullable();
             $table->string('nationality')->nullable();
             $table->date('dob')->nullable();
             $table->longText('notes')->nullable();
