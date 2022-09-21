@@ -24,8 +24,8 @@ class Contact extends Model
         return $this->belongsToMany(Address::class);
     }
 
-    public function phoneNumbers(): HasMany
+    public function contactExtras(): HasMany
     {
-        return $this->hasMany(PhoneNumber::class);
+        return $this->hasMany(ContactExtra::class);
     }
 }
