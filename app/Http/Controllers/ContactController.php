@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\ContactExtra;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\Contact\Store;
@@ -39,6 +40,13 @@ class ContactController extends Controller
         $contact = Contact::create(array_merge($contact, [
             'notes' => $request->notes,
         ]));
+
+        $phone = new ContactExtra([
+            'type' => ContactExtra::TYPE_PHONE,
+            'value' => $request->phone,
+        ]);
+        
+        $contact->contactExtras()->save($phone);
 
         return redirect()->action('ContactController@edit', [$contact->id]);
     }
