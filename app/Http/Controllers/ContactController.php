@@ -11,16 +11,32 @@ use Illuminate\Http\RedirectResponse;
 
 class ContactController extends Controller
 {
+    /**
+     * Index all Contacts
+     * 
+     * @return View
+     */
     public function index(): View
     {
         return view('contact.index');
     }
 
+    /**
+     * Display the Contact:create page
+     * 
+     * @return View
+     */
     public function create(): View
     {
         return view('contact.create');
     }
 
+    /**
+     * Store the Contact, with related ContactExtra to DB
+     * 
+     * @param Store $request the request received from the submitted form
+     * @return RedirectResponse
+     */
     public function store(Store $request): RedirectResponse
     {
         $name = $request->input('name');
