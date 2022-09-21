@@ -4,7 +4,7 @@
     <form method="POST" action="{{url('contacts')}}">
         @csrf
         <div class="card">
-            <div class="card-header">Create Contact</div>
+            <div class="card-header">Edit Contact</div>
             <div class="card-body">
                 <div class="form-row">
                     <text-input
