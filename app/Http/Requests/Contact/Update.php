@@ -31,6 +31,7 @@ class Update extends FormRequest
             'middle_names' => 'max:255',
             'nationality' => 'max:255',
             'nickname' => 'max:255',
+            'notes' => 'max:4095',
         ];
     }
 }
