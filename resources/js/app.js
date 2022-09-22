@@ -7,6 +7,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 import Multiselect from 'vue-multiselect';
 
+import ContactListItem from './components/Contact/ContactListItem.vue';
+
 import CountryInput from './components/Form/CountryInput.vue';
 import DateInput from './components/Form/DateInput.vue';
 import PhoneInput from './components/Form/PhoneInput.vue';
@@ -24,6 +26,7 @@ const app = new Vue({
     el: '#app',
 
     components: {
+        ContactListItem,
         CountryInput,
         DateInput,
         PhoneInput,
