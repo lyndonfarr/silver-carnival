@@ -6,6 +6,7 @@ use App\Contact;
 use App\ContactExtra;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Contact\Store;
 use Illuminate\Http\RedirectResponse;
 
@@ -18,7 +19,8 @@ class ContactController extends Controller
      */
     public function index(): View
     {
-        return view('contact.index');
+        $contacts = Contact::find(1)->with('primaryPhoneNumber');
+        return view('contact.index')->with(compact('contacts'));
     }
 
     /**

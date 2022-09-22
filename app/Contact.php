@@ -41,4 +41,19 @@ class Contact extends Model
     {
         return $this->hasMany(ContactExtra::class);
     }
+
+    /**
+     * a Contact hasOne primaryPhoneNumber
+     * 
+     * @see https://ralphjsmit.com/laravel-eloquent-relationships
+     * @return HasOne
+     */
+    public function primaryPhoneNumber(): HasOne
+    {
+        return $this->hasOne(ContactExtra::class)->ofMany([
+            'id' => 'max',
+        ], function ($query) {
+            $query->where('type', 'phone')->where('current', true);
+        });
+    }
 }
