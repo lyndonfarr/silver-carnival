@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Contact extends Model
 {
+    /** 
+     * @var array
+     */
     protected $fillable = [
         'description',
         'dob',
@@ -19,11 +22,21 @@ class Contact extends Model
         'notes',
     ];
 
+    /**
+     * a Contact belongsToMany Addresses
+     * 
+     * @return BelongsToMany
+     */
     public function addresses(): BelongsToMany
     {
         return $this->belongsToMany(Address::class);
     }
 
+    /**
+     * a Contact hasMany ContactExtras
+     * 
+     * @return HasMany
+     */
     public function contactExtras(): HasMany
     {
         return $this->hasMany(ContactExtra::class);
