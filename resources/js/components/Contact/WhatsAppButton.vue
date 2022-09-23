@@ -1,5 +1,5 @@
 <template>
-    <a :href="`${process.env.WHATSAPP_API_STRING}${phoneNumber}`" class=""></a>
+    <a :href="link" class="" target="_blank">Whatsapp</a>
 </template>
 
 <script>
@@ -10,6 +10,12 @@ export default {
         phoneNumber: {
             required: true,
             type: String,
+        },
+    },
+
+    computed: {
+        link() {
+            return process.env.MIX_WHATSAPP_API_STRING + this.phoneNumber;
         },
     },
 }
