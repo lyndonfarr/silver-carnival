@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -45,15 +46,13 @@ class Contact extends Model
     /**
      * a Contact hasOne primaryPhoneNumber
      * 
-     * @see https://ralphjsmit.com/laravel-eloquent-relationships
      * @return HasOne
      */
     public function primaryPhoneNumber(): HasOne
     {
-        return $this->hasOne(ContactExtra::class)->ofMany([
-            'id' => 'max',
-        ], function ($query) {
-            $query->where('type', 'phone')->where('current', true);
-        });
+        return $this->hasOne(ContactExtra::class)->where([
+            'current' => true,
+            'type' => 'phone',
+        ]);
     }
 }
