@@ -1,12 +1,10 @@
 <template>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     {{ contact.first_name }}
-    <span
-        class="badge badge-primary badge-pill"
-        v-if="contact.current_phone_number"
-    >
+    <span>
         <whats-app-button
             :phone-number="contact.current_phone_number.value"
+            v-if="contact.current_phone_number"
         ></whats-app-button>
     </span>
   </li>
