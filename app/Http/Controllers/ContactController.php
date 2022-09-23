@@ -19,7 +19,7 @@ class ContactController extends Controller
      */
     public function index(): View
     {
-        $contacts = Contact::find(1)->with('primaryPhoneNumber');
+        $contacts = Contact::with('currentPhoneNumber')->get();
         return view('contact.index')->with(compact('contacts'));
     }
 
