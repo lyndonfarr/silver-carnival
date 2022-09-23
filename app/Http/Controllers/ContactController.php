@@ -69,10 +69,18 @@ class ContactController extends Controller
         return redirect()->action('ContactController@edit', [$contact->id]);
     }
 
-    // public function show()
-    // {
-
-    // }
+    /**
+     * Display the Contact:show page
+     * 
+     * @param Request $request the Request object
+     * @param int $id the id of the Contact to show
+     * @return View
+     */
+    public function show(Request $request, int $id): View
+    {
+        $contact = Contact::with('contactExtras')->findOrFail($id);
+        return view('contact.show')->with(compact('contact'));
+    }
 
     public function edit(Request $request, int $id): View
     {
