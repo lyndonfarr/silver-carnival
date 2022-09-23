@@ -44,11 +44,11 @@ class Contact extends Model
     }
 
     /**
-     * a Contact hasOne primaryPhoneNumber
+     * a Contact hasOne currentPhoneNumber
      * 
      * @return HasOne
      */
-    public function primaryPhoneNumber(): HasOne
+    public function currentPhoneNumber(): HasOne
     {
         return $this->hasOne(ContactExtra::class)->where([
             'current' => true,
