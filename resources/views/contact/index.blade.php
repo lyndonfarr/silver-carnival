@@ -6,6 +6,7 @@
     @foreach($contacts as $contact)
         <contact-list-item
             :contact="{{ $contact }}"
+            show-route="{{ route('contacts.show', $contact->id) }}"
         ></contact-list-item>
     @endforeach
 </ul>

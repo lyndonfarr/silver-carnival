@@ -1,6 +1,6 @@
 <template>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-    {{ contact.first_name }}
+    <a :href="showRoute" v-text="contact.first_name"></a>
     <span>
         <whats-app-button
             :phone-number="contact.current_phone_number.value"
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import WhatsAppButton from './WhatsAppButton.vue';
+import WhatsAppButton from '../Buttons/WhatsAppButton.vue';
 
 export default {
     name: 'ContactListItem',
@@ -24,6 +24,10 @@ export default {
         contact: {
             required: true,
             type: Object,
+        },
+        showRoute: {
+            required: true,
+            type: String,
         },
     },
 }
