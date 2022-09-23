@@ -10,6 +10,12 @@ use App\Http\Requests\Address\Store;
 
 class AddressController extends Controller
 {
+    /**
+     * Display the Address:create page
+     * 
+     * @param Request $request the Request object
+     * @return View
+     */
     public function create(Request $request): View
     {
         $contacts = Contact::all()
