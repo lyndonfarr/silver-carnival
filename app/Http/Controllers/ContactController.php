@@ -41,23 +41,10 @@ class ContactController extends Controller
      */
     public function store(Store $request): RedirectResponse
     {
-        $name = $request->input('name');
-        $name = trim($name);
-        $name = explode(' ', $name);
-        
-        $contact['first_name'] = array_shift($name);
-
-        if (count($name)) {
-            $contact['last_name'] = array_pop($name);
-        }
-
-        if (count($name)) {
-            $contact['middle_names'] = join($name, ' ');
-        }
-
-        $contact = Contact::create(array_merge($contact, [
+        $contact = Contact::create([
+            'full_name' => $request->input('name'),
             'notes' => $request->notes,
-        ]));
+        ]);
 
         $phone = new ContactExtra([
             'type' => ContactExtra::TYPE_PHONE,
