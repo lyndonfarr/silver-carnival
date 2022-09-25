@@ -1,6 +1,18 @@
 @extends('layouts.contact')
 
 @section('contactContent')
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form method="POST" action="{{ route('contacts.update', $contact->id) }}">
         @csrf
         @method('PUT')
@@ -53,6 +65,7 @@
                         name="notes"
                     ></textarea-input>
                 </div>
+
             </div>
             <div class="card-footer">
                 <button
