@@ -8,6 +8,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Contact\Store;
+use App\Http\Requests\Contact\Update;
 use Illuminate\Http\RedirectResponse;
 
 class ContactController extends Controller
@@ -19,7 +20,7 @@ class ContactController extends Controller
      */
     public function index(): View
     {
-        $contacts = Contact::with('currentPhoneNumber')->get();
+        $contacts = Contact::with('primaryPhoneNumber')->get();
         return view('contact.index')->with(compact('contacts'));
     }
 
@@ -36,13 +37,13 @@ class ContactController extends Controller
     /**
      * Store the Contact, with related ContactExtra to DB
      * 
-     * @param Store $request the request received from the submitted form
+     * @param Store $the Request object
      * @return RedirectResponse
      */
     public function store(Store $request): RedirectResponse
     {
         $contact = Contact::create([
-            'full_name' => $request->input('name'),
+            'full_name' => $request->full_name,
             'notes' => $request->notes,
         ]);
 
@@ -82,19 +83,27 @@ class ContactController extends Controller
         return view('contact.edit')->with(compact('contact'));
     }
 
-    // public function update()
-    // {
-        // $contact = Contact::create([
-        //     'description' => $request->description,
-        //     'dob' => $request->dob,
-        //     'first_name' => $request->first_name,
-        //     'last_name' => $request->last_name,
-        //     'middle_names' => $request->middle_names,
-        //     'nationality' => $request->nationality,
-        //     'nickname' => $request->nickname,
-        //     'notes' => $request->notes,
-        // ]);
-    // }
+    /**
+     * Update the Contact with related ContactExtras
+     * 
+     * @param Update $request the Request object
+     * @param int $id the id of the Contact to update
+     * @return RedirectResponse
+     */
+    public function update(Update $request, int $id): RedirectResponse
+    {
+        $contact = Contact::findOrFail($id);
+        $contact->update([
+            'dob' => $request->dob,
+            'full_name' => $request->full_name,
+            'nationality' => $request->nationality,
+            'nickname' => $request->nickname,
+            'notes' => $request->notes,
+        ]);
+        $contact->save();
+
+        return redirect()->action('ContactController@show', [$contact->id]);
+    }
 
     // public function destroy()
     // {
