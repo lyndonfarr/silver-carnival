@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Contact\Store;
 use App\Http\Requests\Contact\Update;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ContactController extends Controller
 {
@@ -54,7 +55,7 @@ class ContactController extends Controller
         
         $contact->contactExtras()->save($phone);
 
-        return redirect()->action('ContactController@edit', [$contact->id]);
+        return redirect()->action('ContactController@show', [$contact->id]);
     }
 
     /**
@@ -73,13 +74,18 @@ class ContactController extends Controller
     /**
      * Display the Contact:edit page
      * 
+     * @see https://www.itsolutionstuff.com/post/laravel-56-crud-application-for-starterexample.html
      * @param Request $request the Request object
      * @param int $id the id of the Contact to edit
      * @return View
      */
     public function edit(Request $request, int $id): View
     {
-        $contact = Contact::findOrFail($id);
+        $contact = Contact::with([
+            'ContactExtras' => function (HasMany $query) {
+                return $query;
+            },
+        ])->findOrFail($id);
         return view('contact.edit')->with(compact('contact'));
     }
 
