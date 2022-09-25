@@ -65,7 +65,7 @@ class ContactController extends Controller
      */
     public function show(Request $request, int $id): View
     {
-        $contact = Contact::with('contactExtras')->findOrFail($id);
+        $contact = Contact::with('primaryInstagram')->findOrFail($id);
         return view('contact.show')->with(compact('contact'));
     }
 
