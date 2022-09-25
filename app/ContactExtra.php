@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ContactExtra extends Model
 {
+    const TYPE_INSTAGRAM = 'instagram';
+    const TYPE_PHONE = 'phone';
+
     /**
      * @var array
      */
@@ -15,8 +18,6 @@ class ContactExtra extends Model
         'type',
         'value',
     ];
-
-    const TYPE_PHONE = 'phone';
 
     /**
      * a ContactExtra belongsTo a Contact
