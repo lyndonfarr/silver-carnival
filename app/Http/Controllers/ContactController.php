@@ -83,7 +83,7 @@ class ContactController extends Controller
     {
         $contact = Contact::with([
             'ContactExtras' => function (HasMany $query) {
-                return $query;
+                return $query->orderBy('contact_extras.primary')->groupBy('contact_extras.type');
             },
         ])->findOrFail($id);
         return view('contact.edit')->with(compact('contact'));
