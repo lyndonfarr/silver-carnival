@@ -3,8 +3,8 @@
     <a :href="showRoute" v-text="contact.full_name"></a>
     <span>
         <whats-app-button
-            :phone-number="contact.current_phone_number.value"
-            v-if="contact.current_phone_number"
+            :phone-number="contact.primary_phone_number.value"
+            v-if="contact.primary_phone_number"
         ></whats-app-button>
     </span>
   </li>

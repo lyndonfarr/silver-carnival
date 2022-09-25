@@ -1,8 +1,9 @@
 @extends('layouts.contact')
 
 @section('contactContent')
-    <form method="POST" action="{{url('contacts')}}">
+    <form method="POST" action="{{ route('contacts.update', $contact->id) }}">
         @csrf
+        @method('PUT')
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <span>Edit Contact</span>
@@ -18,25 +19,9 @@
                 <div class="form-row">
                     <text-input
                         class="col-md-12"
-                        label="First Name"
-                        name="first_name"
-                        value="{{ $contact->first_name }}"
-                    ></text-input>
-                </div>
-                <div class="form-row">
-                    <text-input
-                        class="col-md-12"
-                        label="Middle Names"
-                        name="middle_names"
-                        value="{{ $contact->middle_names }}"
-                    ></text-input>
-                </div>
-                <div class="form-row">
-                    <text-input
-                        class="col-md-12"
-                        label="Last Name"
-                        name="last_name"
-                        value="{{ $contact->last_name }}"
+                        label="Full Name"
+                        name="full_name"
+                        value="{{ $contact->full_name }}"
                     ></text-input>
                 </div>
                 <div class="form-row">

@@ -1,7 +1,7 @@
 @extends('layouts.contact')
 
 @section('contactContent')
-    <form method="POST" action="{{url('contacts')}}">
+    <form method="POST" action="{{ route('contacts.store') }}">
         @csrf
         <div class="card">
             <div class="card-header">Create Contact</div>
@@ -10,7 +10,7 @@
                     <text-input
                         class="col-md-12"
                         label="Name"
-                        name="name"
+                        name="full_name"
                         :no-label="true"
                     ></text-input>
                 </div>
