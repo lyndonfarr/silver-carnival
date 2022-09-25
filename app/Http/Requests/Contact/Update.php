@@ -24,7 +24,7 @@ class Update extends FormRequest
     public function rules()
     {
         return [
-            'dob' => 'date_format:Y-m-d|before:now',
+            'dob' => 'date_format:Y-m-d|before:now|nullable',
             'full_name' => 'required|max:255',
             'nationality' => 'max:255',
             'nickname' => 'max:255',
