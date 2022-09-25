@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import WhatsAppButton from '../Buttons/WhatsAppButton.vue';
+import WhatsAppButton from '../Buttons/ContactExtras/WhatsAppButton.vue';
 
 export default {
     name: 'ContactListItem',
