@@ -4,7 +4,16 @@
     <form method="POST" action="{{url('contacts')}}">
         @csrf
         <div class="card">
-            <div class="card-header">Edit Contact</div>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span>Edit Contact</span>
+                <ul class="nav nav-pills card-header-pills">
+                    <li class="nav-item">
+                        <show-button
+                            route="{{ route('contacts.show', $contact->id) }}"
+                        ></show-button>
+                    </li>
+                </ul>
+            </div>
             <div class="card-body">
                 <div class="form-row">
                     <text-input
