@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -31,7 +32,10 @@ class Contact extends Model
      *
      * @var array
      */
-    protected $appends = ['full_name'];
+    protected $appends = [
+        'age',
+        'full_name',
+    ];
 
     //=======
     //<RELATIONSHIPS>
@@ -61,11 +65,24 @@ class Contact extends Model
      * 
      * @return HasOne
      */
-    public function currentPhoneNumber(): HasOne
+    public function primaryPhoneNumber(): HasOne
     {
         return $this->hasOne(ContactExtra::class)->where([
-            'current' => true,
-            'type' => 'phone',
+            'primary' => true,
+            'type' => ContactExtra::TYPE_PHONE,
+        ]);
+    }
+
+    /**
+     * a Contact hasOne primaryInstagram
+     * 
+     * @return HasOne
+     */
+    public function primaryInstagram(): HasOne
+    {
+        return $this->hasOne(ContactExtra::class)->where([
+            'primary' => true,
+            'type' => ContactExtra::TYPE_INSTAGRAM,
         ]);
     }
     //=======
@@ -97,6 +114,18 @@ class Contact extends Model
     //=======
     //<ACCESSORS>
     //=======
+    /**
+     * Derive a Contacts age from their dob
+     * 
+     * @return null|int
+     */
+    public function getAgeAttribute(): ?int
+    {
+        return isset($this->dob)
+            ? Carbon::parse($this->dob)->diffInYears()
+            : null;
+    }
+    
     /**
      * Concat first_name, middle_names, and last_name column into one string
      * 
