@@ -24,7 +24,7 @@ class Store extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:255',
+            'full_name' => 'required|max:255',
             'notes' => 'max:4095',
             'phone' => 'required|max:20',
         ];
