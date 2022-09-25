@@ -1,6 +1,6 @@
 <template>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-    <a :href="showRoute" v-text="contact.first_name"></a>
+    <a :href="showRoute" v-text="contact.full_name"></a>
     <span>
         <whats-app-button
             :phone-number="contact.current_phone_number.value"
