@@ -81,22 +81,24 @@ class ContactController extends Controller
      */
     public function edit(Request $request, int $id): View
     {
-        $contact = Contact::with([
-            'ContactExtras' => function (HasMany $query) {
-                return $query->orderBy('contact_extras.primary')->groupBy('contact_extras.type');
-            },
-        ])->findOrFail($id);
-        return view('contact.edit')->with(compact('contact'));
+        //@TODO retrieve the ContactExtras WITH the Contact. Wasn't working.
+        $contact = Contact::findOrFail($id);
+        
+        $contactExtras = ContactExtra::where(['contact_id' => $contact->id])->get()->groupBy('type');
+
+        return view('contact.edit')->with(compact('contact', 'contactExtras'));
     }
 
     /**
      * Update the Contact with related ContactExtras
      * 
+     * @see https://www.semicolonworld.com/question/50299/laravel-eloquent-update-a-model-and-its-relationships
+     * 
      * @param Update $request the Request object
      * @param int $id the id of the Contact to update
      * @return RedirectResponse
      */
-    public function update(Update $request, int $id): RedirectResponse
+    public function update(Request $request, int $id): RedirectResponse
     {
         $contact = Contact::findOrFail($id);
         $contact->update([
@@ -105,6 +107,7 @@ class ContactController extends Controller
             'nationality' => $request->nationality,
             'nickname' => $request->nickname,
             'notes' => $request->notes,
+            'contact_extras[2]' => $request->contact_extras[2],
         ]);
         $contact->save();
 
