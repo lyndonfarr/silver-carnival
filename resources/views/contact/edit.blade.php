@@ -65,6 +65,28 @@
                         name="notes"
                     ></textarea-input>
                 </div>
+                
+                @foreach ($contactExtras['phone'] as $phoneNumber)
+                    <div class="form-row">
+                        <text-input
+                            class="col-md-12"
+                            label="Phone Number"
+                            name="{{ 'contact_extras[' . $phoneNumber->id . '][\'value\']' }}"
+                            value="{{ $phoneNumber->value }}"
+                        ></text-input>
+                    </div>
+                @endforeach
+
+                @foreach ($contactExtras['instagram'] as $instagram)
+                    <div class="form-row">
+                        <text-input
+                            class="col-md-12"
+                            label="Instagram"
+                            name="{{ 'contact_extras[' . $instagram->id . '][\'value\']' }}"
+                            value="{{ $instagram->value }}"
+                        ></text-input>
+                    </div>
+                @endforeach
 
             </div>
             <div class="card-footer">
