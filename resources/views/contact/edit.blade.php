@@ -45,18 +45,18 @@
                     ></text-input>
                 </div>
                 <div class="form-row">
-                    <country-input
-                        class="col-md-12"
-                        label="Nationality"
-                        name="nationality"
-                    ></country-input>
-                </div>
-                <div class="form-row">
                     <date-input
                         class="col-md-12"
                         label="Date of Birth"
                         name="dob"
                     ></date-input>
+                </div>
+                <div class="form-row">
+                    <country-input
+                        class="col-md-12"
+                        label="Nationality"
+                        name="nationality"
+                    ></country-input>
                 </div>
                 <div class="form-row">
                     <textarea-input
@@ -65,29 +65,6 @@
                         name="notes"
                     ></textarea-input>
                 </div>
-                
-                @foreach ($contactExtras['phone'] as $phoneNumber)
-                    <div class="form-row">
-                        <text-input
-                            class="col-md-12"
-                            label="Phone Number"
-                            name="{{ 'contact_extras[' . $phoneNumber->id . '][\'value\']' }}"
-                            value="{{ $phoneNumber->value }}"
-                        ></text-input>
-                    </div>
-                @endforeach
-
-                @foreach ($contactExtras['instagram'] as $instagram)
-                    <div class="form-row">
-                        <text-input
-                            class="col-md-12"
-                            label="Instagram"
-                            name="{{ 'contact_extras[' . $instagram->id . '][\'value\']' }}"
-                            value="{{ $instagram->value }}"
-                        ></text-input>
-                    </div>
-                @endforeach
-
             </div>
             <div class="card-footer">
                 <button
