@@ -107,9 +107,7 @@ class ContactController extends Controller
             'nationality' => $request->nationality,
             'nickname' => $request->nickname,
             'notes' => $request->notes,
-            'contact_extras[2]' => $request->contact_extras[2],
         ]);
-        $contact->save();
 
         return redirect()->action('ContactController@show', [$contact->id]);
     }
