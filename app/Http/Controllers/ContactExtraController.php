@@ -6,6 +6,8 @@ use App\Contact;
 use App\ContactExtra;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\ContactExtra\Update;
 
 class ContactExtraController extends Controller
 {
@@ -26,5 +28,20 @@ class ContactExtraController extends Controller
         $contactExtras = ContactExtra::where(['contact_id' => $contact->id])->get()->groupBy('type');
 
         return view('contact_extra.edit')->with(compact('contact', 'contactExtras', 'id'));
+    }
+
+    /**
+     * Update the ContactExtra
+     * 
+     * @param Update $request the Request object
+     * @param int $id the id of the ContactExtra to update
+     * @return RedirectResponse
+     */
+    public function update(Update $request, int $id): RedirectResponse
+    {
+        $contactExtra = ContactExtra::findOrFail($id);
+        $contactExtra->update(['value' => $request->value]);
+
+        return redirect()->action('ContactController@show', [$contactExtra->contact_id]);
     }
 }

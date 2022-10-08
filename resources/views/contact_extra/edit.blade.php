@@ -19,30 +19,30 @@
             <contact-extra-list-item
                 :contact-extra="{{ $contactExtra }}"
                 edit-route="{{ route('contact-extras.edit', $contactExtra->id) }}"
-                update-route="{{ route('contact-extras.update', $contactExtra->id) }}"
             ></contact-extra-list-item>
         @else
-        <div class="list-group-item">
-            <form method="POST" action="{{ route('contact-extras.update', $contactExtra->id) }}" class="form-inline">
-                @csrf
-                @method('PUT')
-                <div class="form-group">
-                    <label for="contactExtra">{{ Str::ucfirst($contactExtra->type) }}</label>
-                    <input
-                        class="form-control mx-sm-3"
-                        id="contactExtra"
-                        type="string"
-                        value="{{ $contactExtra->value }}"
-                    >
-                    <button
-                        type="submit"
-                        class="btn btn-primary"
-                    >
-                        Save
-                    </button>
-                </div>
-            </form>
-        </div>
+            <div class="list-group-item">
+                <form method="POST" action="{{ route('contact-extras.update', $contactExtra->id) }}" class="form-inline">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <label for="contactExtra">{{ Str::ucfirst($contactExtra->type) }}</label>
+                        <input
+                            class="form-control mx-sm-3"
+                            id="contactExtra"
+                            name="value"
+                            type="string"
+                            value="{{ $contactExtra->value }}"
+                        >
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
         @endif
     @endforeach
     </ul>
