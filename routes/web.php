@@ -6,6 +6,7 @@ Route::get('/', function () {
 
 Route::resource('/addresses', 'AddressController');
 Route::resource('/contacts', 'ContactController');
+Route::resource('/contact-extras', 'ContactExtraController');
 
 // Auth::routes();
 
