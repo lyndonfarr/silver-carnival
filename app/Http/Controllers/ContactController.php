@@ -90,7 +90,7 @@ class ContactController extends Controller
     }
 
     /**
-     * Update the Contact with related ContactExtras
+     * Update the Contact
      * 
      * @see https://www.semicolonworld.com/question/50299/laravel-eloquent-update-a-model-and-its-relationships
      * 
@@ -98,7 +98,7 @@ class ContactController extends Controller
      * @param int $id the id of the Contact to update
      * @return RedirectResponse
      */
-    public function update(Request $request, int $id): RedirectResponse
+    public function update(Update $request, int $id): RedirectResponse
     {
         $contact = Contact::findOrFail($id);
         $contact->update([
