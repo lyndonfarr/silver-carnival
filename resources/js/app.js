@@ -14,7 +14,7 @@ import EditButton from './components/Buttons/Crud/EditButton.vue';
 import ShowButton from './components/Buttons/Crud/ShowButton.vue';
 
 import ContactListItem from './components/Contact/ContactListItem.vue';
-import ContactShow from './components/Contact/ContactShow.vue';
+import ContactFieldListItem from './components/Contact/ContactFieldListItem.vue';
 
 import ContactExtraListItem from './components/ContactExtra/ContactExtraListItem.vue';
 
@@ -38,8 +38,8 @@ const app = new Vue({
 
     components: {
         CalendarIcon,
+        ContactFieldListItem,
         ContactListItem,
-        ContactShow,
         ContactExtraListItem,
         CountryInput,
         DateInput,
