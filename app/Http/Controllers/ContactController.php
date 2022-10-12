@@ -71,47 +71,6 @@ class ContactController extends Controller
         return view('contact.show')->with(compact('contact'));
     }
 
-    /**
-     * Display the Contact:edit page
-     * 
-     * @see https://www.itsolutionstuff.com/post/laravel-56-crud-application-for-starterexample.html
-     * @param Request $request the Request object
-     * @param int $id the id of the Contact to edit
-     * @return View
-     */
-    public function edit(Request $request, int $id): View
-    {
-        //@TODO retrieve the ContactExtras WITH the Contact. Wasn't working.
-        $contact = Contact::findOrFail($id);
-        
-        $contactExtras = ContactExtra::where(['contact_id' => $contact->id])->get()->groupBy('type');
-
-        return view('contact.edit')->with(compact('contact', 'contactExtras'));
-    }
-
-    /**
-     * Update the Contact
-     * 
-     * @see https://www.semicolonworld.com/question/50299/laravel-eloquent-update-a-model-and-its-relationships
-     * 
-     * @param Update $request the Request object
-     * @param int $id the id of the Contact to update
-     * @return RedirectResponse
-     */
-    public function update(Update $request, int $id): RedirectResponse
-    {
-        $contact = Contact::findOrFail($id);
-        $contact->update([
-            'dob' => $request->dob,
-            'full_name' => $request->full_name,
-            'nationality' => $request->nationality,
-            'nickname' => $request->nickname,
-            'notes' => $request->notes,
-        ]);
-
-        return redirect()->action('ContactController@show', [$contact->id]);
-    }
-
     // public function destroy()
     // {
 
