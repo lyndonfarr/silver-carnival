@@ -8,13 +8,15 @@
         >
             <div class="form-group">
                 <label :for="fieldName">{{ label }}:</label>
-                <input
-                    @blur="updateField"
-                    class="form-control mx-sm-3"
-                    :id="fieldName"
-                    type="text"
-                    :value="value || ''"
-                >
+                <slot>
+                    <input
+                        @blur="updateField"
+                        class="form-control mx-sm-3"
+                        :id="fieldName"
+                        type="text"
+                        :value="value || ''"
+                    >
+                </slot>
             </div>
         </form>
         <span v-else @click="toggleEdit">{{ label }}: {{ value }}</span>
