@@ -1,5 +1,5 @@
 <template>
-    <div class="form-group col-md-4">
+    <div class="form-group">
         <label
             :for="`country_input_${name}`"
             v-text="label"
