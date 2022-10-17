@@ -1,13 +1,23 @@
 <script>
-import ContactFieldListItem from '../Contact/ContactFieldListItem.vue';
-import ContactExtraListItem from '../ContactExtra/ContactExtraListItem.vue';
+import AddIcon from '../Icons/AddIcon.vue';
+import ContactExtraAddButton from '../Buttons/ContactExtras/ContactExtraAddButton.vue';
+import CountryInput from '../Form/CountryInput.vue'
+import DateInput from '../Form/DateInput.vue';
+import ShowButton from '../Buttons/Crud/ShowButton.vue';
+import TextareaInput from '../Form/TextareaInput.vue';
+import TextInput from '../Form/TextInput.vue';
 
 export default {
     name: 'ValueStorage',
 
     components: {
-        ContactExtraListItem,
-        ContactFieldListItem,
+        AddIcon,
+        ContactExtraAddButton,
+        CountryInput,
+        DateInput,
+        ShowButton,
+        TextareaInput,
+        TextInput,
     },
 
     props: {
