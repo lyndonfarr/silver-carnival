@@ -38,7 +38,7 @@ class ContactController extends Controller
     /**
      * Store the Contact, with related ContactExtra to DB
      * 
-     * @param Store $the Request object
+     * @param Store $request the Request object
      * @return RedirectResponse
      */
     public function store(Store $request): RedirectResponse
@@ -56,6 +56,18 @@ class ContactController extends Controller
         $contact->contactExtras()->save($phone);
 
         return redirect()->action('ContactController@show', [$contact->id]);
+    }
+
+    /**
+     * Display the Contact::edit page
+     * 
+     * @param int $id the id of the Contact to edit
+     * @return View
+     */
+    public function edit(Request $request, int $id): View
+    {
+        $contact = Contact::with('contactExtras')->findOrFail($id);
+        return view('contact.edit')->with(compact('contact'));
     }
 
     /**
