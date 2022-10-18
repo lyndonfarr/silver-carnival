@@ -20,6 +20,7 @@ class CreateAddressContact extends Migration
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
             $table->boolean('current')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

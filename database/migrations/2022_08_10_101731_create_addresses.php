@@ -23,6 +23,7 @@ class CreateAddresses extends Migration
             $table->string('country')->nullable();
             $table->boolean('current')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

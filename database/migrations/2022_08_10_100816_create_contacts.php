@@ -23,6 +23,7 @@ class CreateContacts extends Migration
             $table->date('dob')->nullable();
             $table->longText('notes')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

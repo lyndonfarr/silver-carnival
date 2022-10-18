@@ -22,6 +22,7 @@ class CreateContactExtras extends Migration
             $table->boolean('primary')->default(false);
             $table->boolean('current')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
