@@ -50,7 +50,7 @@ export default {
 
     methods: {
         addContactExtra(e) {
-            this.$emit('added', e.target.value);
+            this.$emit('input', e.target.value);
         },
     },
 }
