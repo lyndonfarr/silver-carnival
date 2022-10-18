@@ -5,15 +5,18 @@
             v-if="!noLabel"
             v-text="label"
         ></label>
-        <input
-            type="text"
-            class="form-control"
-            :id="name"
-            @input="emitInput"
-            :name="name"
-            :placeholder="label"
-            :value="value"
-        >
+        <div class="d-flex">
+            <input
+                type="text"
+                class="form-control"
+                :id="name"
+                @input="emitInput"
+                :name="name"
+                :placeholder="label"
+                :value="value"
+            >
+            <slot name="buttons"></slot>
+        </div>
     </div>
 </template>
 
