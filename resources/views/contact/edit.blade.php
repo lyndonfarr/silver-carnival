@@ -47,12 +47,13 @@
         </div>
         <div class="card mb-4">
             <div class="card-header d-flex">
-                Edit ContactExtras
+                <span v-if="storedValue.contact.contact_extras.length || storedValue.newContactExtras.length">Edit ContactExtras</span>
+                <span v-else>Create ContactExtras</span>
                 <contact-extra-add-button
                     @input="e => storedValue.newContactExtras = [...storedValue.newContactExtras, {type: e, value: '', key: storedValue.newContactExtras.length}]"
                 ></contact-extra-add-button>
             </div>
-            <div class="card-body">
+            <div class="card-body" v-if="storedValue.contact.contact_extras.length || storedValue.newContactExtras.length">
                 <text-input
                     :key="contactExtra.id"
                     :label="contactExtra.type"
