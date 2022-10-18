@@ -59,18 +59,6 @@ class ContactController extends Controller
     }
 
     /**
-     * Display the Contact::edit page
-     * 
-     * @param int $id the id of the Contact to edit
-     * @return View
-     */
-    public function edit(Request $request, int $id): View
-    {
-        $contact = Contact::with('contactExtras')->findOrFail($id);
-        return view('contact.edit')->with(compact('contact'));
-    }
-
-    /**
      * Display the Contact:show page
      * 
      * @param Request $request the Request object
@@ -82,6 +70,20 @@ class ContactController extends Controller
         $contact = Contact::with('primaryInstagram')->findOrFail($id);
         return view('contact.show')->with(compact('contact'));
     }
+
+    /**
+     * Display the Contact::edit page
+     * 
+     * @param int $id the id of the Contact to edit
+     * @return View
+     */
+    public function edit(Request $request, int $id): View
+    {
+        $contact = Contact::with('contactExtras')->findOrFail($id);
+        return view('contact.edit')->with(compact('contact'));
+    }
+
+    // public function update()
 
     // public function destroy()
     // {
