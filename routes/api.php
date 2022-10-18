@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ContactController;
+use App\Http\Controllers\Api\ContactExtraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,8 @@ use App\Http\Controllers\Api\ContactController;
 */
 
 Route::post('/contacts/edit-field/{contactId}', [ContactController::class, 'editField'])->name('contacts.edit-field');
+Route::delete('/contact-extras/{contactId}', [ContactExtraController::class, 'destroy'])->name('contact-extras.destroy');
+// Route::resource('/contact-extras', 'ContactExtraController');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
