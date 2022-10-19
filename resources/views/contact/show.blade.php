@@ -18,6 +18,7 @@
         <li class="list-group-item">Notes: {{ $contact->notes }}</li>
     </ul>
 </div>
+@if (count($contact->contactExtras))
 <div class="card">
     <ul class="list-group list-group-flush">
         @foreach ($contact->contactExtras as $contactExtra)
@@ -25,4 +26,5 @@
         @endforeach
     </ul>
 </div>
+@endif
 @endsection
