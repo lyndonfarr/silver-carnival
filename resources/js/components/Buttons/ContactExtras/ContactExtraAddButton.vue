@@ -15,7 +15,7 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <button
                 class="dropdown-item"
-                @click="addContactExtra"
+                @click.prevent="addContactExtra"
                 :key="contactExtraType"
                 :value="contactExtraType"
                 v-for="contactExtraType in contactExtraTypes"
