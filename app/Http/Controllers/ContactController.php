@@ -74,6 +74,7 @@ class ContactController extends Controller
     /**
      * Display the Contact::edit page
      * 
+     * @param Request $request the Request object
      * @param int $id the id of the Contact to edit
      * @return View
      */
@@ -83,7 +84,22 @@ class ContactController extends Controller
         return view('contact.edit')->with(compact('contact'));
     }
 
-    // public function update()
+    /**
+     * Update the Contact, with related ContactExtras and Addresses
+     * 
+     * @param Update $request the Request Object
+     * @param int $id the id of the Contact to update
+     * @return RedirectResponse
+     */
+    public function update(Update $request, int $id): RedirectResponse
+    {
+        $contact = Contact::find($id);
+        $contact->update($request->only(['dob', 'full_name', 'nationality', 'nickname', 'notes']));
+
+        
+
+        return redirect()->action('ContactController@show', [$contact->id]);
+    }
 
     // public function destroy()
     // {
