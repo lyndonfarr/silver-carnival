@@ -8,7 +8,9 @@
         newContactExtras: [],
     }"
 >
-    <div>
+    <form method="POST" action="{{ route('contacts.update', $contact->id) }}">
+    @csrf
+    @method('PATCH')
         <div class="card my-4">
             <div class="card-header d-flex">
                 Edit Contact
@@ -45,6 +47,7 @@
                 ></textarea-input>
             </div>
         </div>
+
         <div class="card mb-4">
             <div class="card-header d-flex">
                 <span v-if="storedValue.contact.contact_extras.length || storedValue.newContactExtras.length">Edit ContactExtras</span>
@@ -68,27 +71,34 @@
                         ></api-destroy-button>
                     </template>
                 </text-input>
-                <text-input
-                    :key="`new-contact-extra-${newContactExtra.key}`"
-                    :label="newContactExtra.type"
-                    :name="`contact_extras[${newContactExtra.key}][value]`"
-                    v-for="(newContactExtra, index) in storedValue.newContactExtras"
-                    v-model="storedValue.newContactExtras[index].value"
-                >
-                    <template v-slot:buttons>
-                        <a
-                            class="d-flex align-items-center text-danger ml-2"
-                            @click="e => storedValue.newContactExtras = [...storedValue.newContactExtras.slice(0, index), ...storedValue.newContactExtras.slice(index + 1, storedValue.newContactExtras.length)]"
-                            style="cursor: pointer;"
-                        >
-                            <destroy-icon></destroy-icon>
-                        </a>
-                    </template>
-                </text-input>
+                <div v-for="(newContactExtra, index) in storedValue.newContactExtras">
+                    <text-input
+                        :key="`new-contact-extra-${newContactExtra.key}`"
+                        :label="newContactExtra.type"
+                        :name="`new_contact_extras[${newContactExtra.key}][value]`"
+                        v-model="storedValue.newContactExtras[index].value"
+                    >
+                        <template v-slot:buttons>
+                            <a
+                                class="d-flex align-items-center text-danger ml-2"
+                                @click="e => storedValue.newContactExtras = [...storedValue.newContactExtras.slice(0, index), ...storedValue.newContactExtras.slice(index + 1, storedValue.newContactExtras.length)]"
+                                style="cursor: pointer;"
+                            >
+                                <destroy-icon></destroy-icon>
+                            </a>
+                        </template>
+                    </text-input>
+                    <input
+                        class="d-none"
+                        :name="`new_contact_extras[${newContactExtra.key}][type]`"
+                        type="text"
+                        :value="newContactExtra.type"
+                    >
+                </div>
             </div>
         </div>
 
         <button class="btn btn-primary btn-block">Save</button>
-    </div>
+    </form>
 </value-storage>
 @endsection
