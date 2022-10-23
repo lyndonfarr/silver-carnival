@@ -96,7 +96,22 @@ class ContactController extends Controller
         $contact = Contact::find($id);
         $contact->update($request->only(['dob', 'full_name', 'nationality', 'nickname', 'notes']));
 
-        
+        if (!empty($request->contact_extras)) {
+            foreach ($request->contact_extras as $existingContactExtra) {
+                $contactExtra = ContactExtra::find($existingContactExtra['id']);
+                $contactExtra->update(['value' => $existingContactExtra['value']]);
+            }
+        }
+
+        if (!empty($request->new_contact_extras)) {
+            foreach ($request->new_contact_extras as $newContactExtra) {
+                $contactExtra = new ContactExtra([
+                    'type' => $newContactExtra['type'],
+                    'value' => $newContactExtra['value'],
+                ]);
+                $contact->contactExtras()->save($contactExtra);
+            }
+        }
 
         return redirect()->action('ContactController@show', [$contact->id]);
     }
