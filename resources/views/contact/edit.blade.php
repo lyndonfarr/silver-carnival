@@ -57,20 +57,27 @@
                 ></contact-extra-add-button>
             </div>
             <div class="card-body" v-if="storedValue.contact.contact_extras.length || storedValue.newContactExtras.length">
-                <text-input
-                    :key="contactExtra.id"
-                    :label="contactExtra.type"
-                    :name="`contact_extras[${contactExtra.id}][value]`"
-                    v-for="(contactExtra, index) in storedValue.contact.contact_extras"
-                    v-model="storedValue.contact.contact_extras[index].value"
-                >
-                    <template v-slot:buttons>
-                        <api-destroy-button
-                            class="ml-2"
-                            :endpoint="`/api/contact-extras/${contactExtra.id}`"
-                        ></api-destroy-button>
-                    </template>
-                </text-input>
+                <div v-for="(existingContactExtra, index) in storedValue.contact.contact_extras">
+                    <text-input
+                        :key="existingContactExtra.id"
+                        :label="existingContactExtra.type"
+                        :name="`contact_extras[${index}][value]`"
+                        v-model="storedValue.contact.contact_extras[index].value"
+                    >
+                        <template v-slot:buttons>
+                            <api-destroy-button
+                                class="ml-2"
+                                :endpoint="`/api/contact-extras/${existingContactExtra.id}`"
+                            ></api-destroy-button>
+                        </template>
+                    </text-input>
+                    <input
+                        class="d-none"
+                        :name="`contact_extras[${index}][id]`"
+                        type="text"
+                        :value="existingContactExtra.id"
+                    >
+                </div>
                 <div v-for="(newContactExtra, index) in storedValue.newContactExtras">
                     <text-input
                         :key="`new-contact-extra-${newContactExtra.key}`"
