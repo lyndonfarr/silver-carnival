@@ -29,19 +29,19 @@ class Update extends FormRequest
 
         $contactExtraTypeRule = Rule::in([ContactExtra::TYPE_INSTAGRAM, ContactExtra::TYPE_PHONE]);
         $contactExtraValueRule = 'required|max:255';
+        
+        if (isset($this->contact_extras)) {
+            foreach ($this->contact_extras as $index => $contactExtra) {
+                $rules["contact_extras.{$index}.id"] = 'required|integer|exists:contact_extras,id';
+                $rules["contact_extras.{$index}.type"] = $contactExtraTypeRule;
+                $rules["contact_extras.{$index}.value"] = $contactExtraValueRule;
+            }
+        }
 
         if (isset($this->new_contact_extras)) {
             foreach ($this->new_contact_extras as $index => $newContactExtra) {
                 $rules["new_contact_extras.{$index}.type"] = $contactExtraTypeRule;
                 $rules["new_contact_extras.{$index}.value"] = $contactExtraValueRule;
-            }
-        }
-        
-        if (isset($this->contact_extras)) {
-            foreach ($this->contact_extras as $index => $contactExtra) {
-                $rules["contact_extras.{$index}.id"] = 'integer|exists:contact_extras';
-                $rules["contact_extras.{$index}.type"] = $contactExtraTypeRule;
-                $rules["contact_extras.{$index}.value"] = $contactExtraValueRule;
             }
         }
 
