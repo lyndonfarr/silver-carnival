@@ -14,6 +14,8 @@ class CreateAddressContact extends Migration
     public function up(): void
     {
         Schema::create('address_contact', function (Blueprint $table) {
+            $table->primary(['address_id', 'contact_id']);
+            $table->index(['address_id', 'contact_id']);
             $table->unsignedBigInteger('address_id');
             $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
             $table->unsignedBigInteger('contact_id');
