@@ -7,6 +7,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 import Multiselect from 'vue-multiselect';
 
+import AddressListItemShow from './components/Address/AddressListItemShow.vue';
+
 import InstagramButton from './components/Buttons/ContactExtras/InstagramButton.vue';
 import WhatsAppButton from './components/Buttons/ContactExtras/WhatsAppButton.vue';
 
@@ -17,6 +19,8 @@ import ContactListItem from './components/Contact/ContactListItem.vue';
 import ContactFieldListItem from './components/Contact/ContactFieldListItem.vue';
 
 import ContactExtraListItem from './components/ContactExtra/ContactExtraListItem.vue';
+
+import DayListItem from './components/Event/DayListItem.vue';
 
 import CountryInput from './components/Form/CountryInput.vue';
 import DateInput from './components/Form/DateInput.vue';
@@ -37,12 +41,14 @@ const app = new Vue({
     el: '#app',
 
     components: {
+        AddressListItemShow,
         CalendarIcon,
         ContactFieldListItem,
         ContactListItem,
         ContactExtraListItem,
         CountryInput,
         DateInput,
+        DayListItem,
         EditButton,
         InstagramButton,
         PhoneInput,
