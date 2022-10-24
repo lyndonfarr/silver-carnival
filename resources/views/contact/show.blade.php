@@ -18,8 +18,9 @@
         <li class="list-group-item">Notes: {{ $contact->notes }}</li>
     </ul>
 </div>
+
 @if (count($contact->contactExtras))
-<div class="card">
+<div class="card mb-4">
     <ul class="list-group list-group-flush">
         @foreach ($contact->contactExtras as $contactExtra)
             <li class="list-group-item">{{ ucfirst($contactExtra->type) }}: {{ $contactExtra->value }}</li>
@@ -27,4 +28,17 @@
     </ul>
 </div>
 @endif
+
+@if (count($contact->addresses))
+<div class="card">
+    <ul class="list-group list-group-flush">
+        @foreach ($contact->addresses as $address)
+            <address-list-item-show
+                :address="{{ $address }}"
+            ></address-list-item-show>
+        @endforeach
+    </ul>
+</div>
+@endif
+
 @endsection
