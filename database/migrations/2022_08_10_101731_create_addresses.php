@@ -21,7 +21,6 @@ class CreateAddresses extends Migration
             $table->string('state')->nullable();
             $table->string('post_code')->nullable();
             $table->string('country')->nullable();
-            $table->boolean('current')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });
