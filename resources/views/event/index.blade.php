@@ -2,12 +2,20 @@
 
 @section('content')
 
+<h1>Calendar</h1>
+
 <ul class="list-group">
     @foreach($days as $day => $events)
-        <day-list-item
-            day="{{ $day }}"
-            :events="{{ json_encode($events) }}"
-        ></day-list-item>
+        <div class="card mb-4">
+            <div class="card-header">{{ $day }}</div>
+            <ul class="list-group list-group-flush">
+                @foreach ($events as $event)
+                    <li class="list-group-item">
+                        <a href="{{ route('events.show', $event['id']) }}">{{ $event['name'] }}</a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
     @endforeach
 </ul>
 
