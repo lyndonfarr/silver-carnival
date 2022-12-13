@@ -29,8 +29,8 @@
             <div class="collapse" id="navbarToggleExternalContent">
                 <div class="bg-dark p-4">
                     <div class="container">
-                        <h4 class="text-white">Collapsed content</h4>
-                        <span class="text-muted">Toggleable via the navbar brand.</span>
+                        <a class="d-block" href="{{ route('contacts.index') }}">Contacts</a>
+                        <a class="d-block" href="{{ route('events.index') }}">Events</a>
                     </div>
                 </div>
             </div>
