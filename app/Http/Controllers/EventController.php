@@ -16,10 +16,14 @@ class EventController extends Controller
      */
     public function index(Request $request): View
     {
-        $days = Event::all()->groupBy(function (Event $event) {
-            $date = new Carbon($event->date);
-            return $date->format('l jS \\of F');
-        })->toArray();
+        $days = Event::query()
+            ->whereDate('date', '>=', Carbon::now()->toDateString())
+            ->get()
+            ->groupBy(function (Event $event) {
+                $date = new Carbon($event->date);
+                return $date->format('l jS \\of F, Y');
+            })
+            ->toArray();
 
         return view('event.index')->with(compact('days'));
     }
