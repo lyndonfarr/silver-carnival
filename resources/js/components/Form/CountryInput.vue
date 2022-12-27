@@ -47,7 +47,7 @@ export default {
     data() {
         return {
             countries: [],
-            country: `${this.value}`,
+            country: this.value,
         }
     },
     
