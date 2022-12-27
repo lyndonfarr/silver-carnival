@@ -6,13 +6,9 @@
         ></label>
         <b-form-datepicker
             :id="name"
+            :name="name"
             v-model="date"
         ></b-form-datepicker>
-        <input
-            hidden
-            :name="name"
-            type="text"
-        >
     </div>
 </template>
 
@@ -35,12 +31,23 @@ export default {
             required: true,
             type: String,
         },
+        value: {
+            default: '',
+            required: false,
+            type: String,
+        },
     },
 
     data() {
         return {
-            date: '',
+            date: this.value,
         }
+    },
+
+    watch: {
+        date(newVal) {
+            this.$emit('input', newVal);
+        },
     },
 }
 </script>

@@ -33,7 +33,7 @@
                 <date-input
                     label="DoB"
                     name="dob"
-                    v-model="storedValue.contact.nickname"
+                    v-model="storedValue.contact.dob"
                 ></date-input>
                 <country-input
                     label="Nationality"

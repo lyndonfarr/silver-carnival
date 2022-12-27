@@ -107,21 +107,21 @@ class Contact extends Model
     //=======
     //<MUTATORS>
     //=======
-    public function setFullNameAttribute($full_name): void
-    {
-        $full_name = trim($full_name);
-        $full_name = explode(' ', $full_name);
+    // public function setFullNameAttribute($full_name): void
+    // {
+    //     $full_name = trim($full_name);
+    //     $full_name = explode(' ', $full_name);
         
-        $this->attributes['first_name'] = array_shift($full_name);
+    //     $this->attributes['first_name'] = array_shift($full_name);
 
-        if (count($full_name)) {
-            $this->attributes['last_name'] = array_pop($full_name);
-        }
+    //     if (count($full_name)) {
+    //         $this->attributes['last_name'] = array_pop($full_name);
+    //     }
 
-        if (count($full_name)) {
-            $this->attributes['middle_names'] = join($full_name, ' ');
-        }
-    }
+    //     if (count($full_name)) {
+    //         $this->attributes['middle_names'] = join($full_name, ' ');
+    //     }
+    // }
     //=======
     //</MUTATORS>
     //=======
