@@ -20,8 +20,6 @@ import ContactFieldListItem from './components/Contact/ContactFieldListItem.vue'
 
 import ContactExtraListItem from './components/ContactExtra/ContactExtraListItem.vue';
 
-import DayListItem from './components/Event/DayListItem.vue';
-
 import CountryInput from './components/Form/CountryInput.vue';
 import DateInput from './components/Form/DateInput.vue';
 import PhoneInput from './components/Form/PhoneInput.vue';
@@ -48,7 +46,6 @@ const app = new Vue({
         ContactExtraListItem,
         CountryInput,
         DateInput,
-        DayListItem,
         EditButton,
         InstagramButton,
         PhoneInput,
