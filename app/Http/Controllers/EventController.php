@@ -6,6 +6,7 @@ use App\Event;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Http\Requests\Event\Update;
 
 class EventController extends Controller
 {
@@ -55,6 +56,7 @@ class EventController extends Controller
 
         return view('event.edit')->with(compact('event'));
     }
+    
     /**
      * Update the Event
      * 
