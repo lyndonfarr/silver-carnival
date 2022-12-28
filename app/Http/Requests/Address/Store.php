@@ -13,21 +13,20 @@ class Store extends FormRequest
 
     public function rules(): array
     {
-        return [];
-        // $rules = [];
+        $rules = [];
 
-        // foreach ($this->contact_id as $key => $contactId) {
-        //     $rules["contact_id.{$key}"] = 'required|integer|max:99999999999|exists:contacts,id';
-        // }
+        foreach ($this->contact_id as $key => $contactId) {
+            $rules["contact_id.{$key}"] = 'required|integer|max:99999999999|exists:contacts,id';
+        }
 
-        // return array_merge($rules, [
-        //     'city' => 'max:255',
-        //     'country' => 'max:255',
-        //     'current' => 'boolean|nullable',
-        //     'line_1' => 'max:255',
-        //     'line_2' => 'max:255',
-        //     'post_code' => 'max:255',
-        //     'state' => 'max:255',
-        // ]);
+        return array_merge($rules, [
+            'city' => 'max:255',
+            'country' => 'max:255',
+            'current' => 'boolean|nullable',
+            'line_1' => 'max:255',
+            'line_2' => 'max:255',
+            'post_code' => 'max:255',
+            'state' => 'max:255',
+        ]);
     }
 }
