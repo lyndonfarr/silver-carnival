@@ -1,8 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.event')
 
-@section('content')
-
-<h1>Calendar</h1>
+@section('eventContent')
 
 <ul class="list-group">
     @foreach($days as $day => $events)

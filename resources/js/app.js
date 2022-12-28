@@ -12,7 +12,9 @@ import AddressListItemShow from './components/Address/AddressListItemShow.vue';
 import InstagramButton from './components/Buttons/ContactExtras/InstagramButton.vue';
 import WhatsAppButton from './components/Buttons/ContactExtras/WhatsAppButton.vue';
 
+import CreateButton from './components/Buttons/Crud/CreateButton.vue';
 import EditButton from './components/Buttons/Crud/EditButton.vue';
+import IndexButton from './components/Buttons/Crud/IndexButton.vue';
 import ShowButton from './components/Buttons/Crud/ShowButton.vue';
 
 import ContactListItem from './components/Contact/ContactListItem.vue';
@@ -45,8 +47,10 @@ const app = new Vue({
         ContactListItem,
         ContactExtraListItem,
         CountryInput,
+        CreateButton,
         DateInput,
         EditButton,
+        IndexButton,
         InstagramButton,
         PhoneInput,
         ShowButton,

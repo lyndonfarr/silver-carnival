@@ -1,17 +1,15 @@
 <template>
     <div class="dropdown ml-auto">
-        <a
+        <create-button
             aria-expanded="false"
             aria-haspopup="true"
             class="text-success"
             data-toggle="dropdown"
-            href=""
+            route=""
             id="myDropdownId"
-            title="Add"
+            title="Create"
             type="button"
-        >
-            <add-icon></add-icon>
-        </a>
+        ></create-button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <button
                 class="dropdown-item"
@@ -29,13 +27,15 @@
 <script>
 import {ContactExtraTypes} from '../../../config';
 import {ucfirst} from '../../../filters';
-import AddIcon from '../../Icons/AddIcon.vue';
+import CreateIcon from '../../Icons/CreateIcon.vue';
+import CreateButton from '../Crud/CreateButton.vue';
 
 export default {
     name: 'ContactExtraAddButton',
 
     components: {
-        AddIcon,
+        CreateButton,
+        CreateIcon,
     },
 
     filters: {

@@ -2,7 +2,9 @@
 
 @section('content')
 
-<h1><a href="{{ route('contacts.index') }}">All Contacts</a></h1>
+<h1 class="mb-4">
+    Contacts <create-button route="{{ route('contacts.create') }}"></create-button> <index-button route="{{ route('contacts.index') }}"></index-button>
+</h1>
 
 @yield('contactContent')
 

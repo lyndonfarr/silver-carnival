@@ -1,5 +1,5 @@
 <script>
-import AddIcon from '../Icons/AddIcon.vue';
+import CreateIcon from '../Icons/CreateIcon.vue';
 import ApiDestroyButton from '../Buttons/Crud/ApiDestroyButton.vue';
 import ContactExtraAddButton from '../Buttons/ContactExtras/ContactExtraAddButton.vue';
 import CountryInput from '../Form/CountryInput.vue'
@@ -13,7 +13,7 @@ export default {
     name: 'ValueStorage',
 
     components: {
-        AddIcon,
+        CreateIcon,
         ApiDestroyButton,
         ContactExtraAddButton,
         CountryInput,

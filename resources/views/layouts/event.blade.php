@@ -2,7 +2,9 @@
 
 @section('content')
 
-<h1><a href="{{ route('events.index') }}">All Events</a></h1>
+<h1 class="mb-4">
+    Events <create-button route="{{ route('events.create') }}"></create-button> <index-button route="{{ route('events.index') }}"></index-button>
+</h1>
 
 @yield('eventContent')
 
