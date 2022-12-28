@@ -10,31 +10,31 @@
 </head>
 <body>
     <div id="app">
-        <div class="pos-f-t">
-            <nav class="navbar navbar-dark bg-dark">
-                <div class="container d-flex">
-                    <button
-                        class="navbar-toggler ml-auto"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarToggleExternalContent"
-                        aria-controls="navbarToggleExternalContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-            </nav>
-            <div class="collapse" id="navbarToggleExternalContent">
-                <div class="bg-dark p-4">
-                    <div class="container">
-                        <a class="d-block" href="{{ route('contacts.index') }}">Contacts</a>
-                        <a class="d-block" href="{{ route('events.index') }}">Events</a>
-                    </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <!-- <a class="navbar-brand" href="#">Silver Carnival</a> -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link {{ Route::is(['contacts.create', 'contacts.edit', 'contacts.index', 'contacts.show', 'contact-extras.edit']) ? 'active' : '' }}"
+                                href="{{ route('contacts.index') }}"
+                            >
+                                Contacts
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link {{ Route::is(['events.create', 'events.edit', 'events.index', 'events.show']) ? 'active' : '' }}"
+                                href="{{ route('events.index') }}"
+                            >
+                                Events
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
+        </nav>
         <main class="py-4">
             <div id="root" class="container">
                 @yield('content')
