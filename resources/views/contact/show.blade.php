@@ -13,7 +13,7 @@
         <li class="list-group-item">Name: {{ $contact->full_name }}</li>
         <li class="list-group-item">AKA: {{ $contact->nickname }}</li>
         <li class="list-group-item">Age: {{ $contact->age }}</li>
-        <li class="list-group-item">Born: {{ $contact->dob->format('l jS \\of F, Y') }}</li>
+        <li class="list-group-item">Born: {{ isset($contact->dob) ? $contact->dob->format('l jS \\of F, Y') : null }}</li>
         <li class="list-group-item">Nationality: {{ $contact->nationality }}</li>
         <li class="list-group-item">Notes: {{ $contact->notes }}</li>
     </ul>
@@ -21,6 +21,7 @@
 
 @if (count($contact->contactExtras))
 <div class="card mb-4">
+    <div class="card-header">ContactExtras</div>
     <ul class="list-group list-group-flush">
         @foreach ($contact->contactExtras as $contactExtra)
             <li class="list-group-item">{{ ucfirst($contactExtra->type) }}: {{ $contactExtra->value }}</li>
@@ -31,6 +32,7 @@
 
 @if (count($contact->addresses))
 <div class="card">
+    <div class="card-header">Addresses</div>
     <ul class="list-group list-group-flush">
         @foreach ($contact->addresses as $address)
             <address-list-item-show
@@ -40,5 +42,7 @@
     </ul>
 </div>
 @endif
+
+<a href="{{ route('addresses.create', ['contact_id' => $contact->id]) }}" class="btn btn-block btn-success">Add address</a>
 
 @endsection
