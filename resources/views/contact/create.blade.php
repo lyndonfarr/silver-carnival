@@ -15,7 +15,7 @@
 
     <form method="POST" action="{{ route('contacts.store') }}">
         @csrf
-        <div class="card">
+        <div class="card mb-4">
             <div class="card-header">Create Contact</div>
             <div class="card-body">
                 <div class="form-row">
@@ -43,14 +43,12 @@
                     ></textarea-input>
                 </div>
             </div>
-            <div class="card-footer">
-                <button
-                    type="submit"
-                    class="btn btn-primary btn-block"
-                >
-                    Save
-                </button>
-            </div>
         </div>
+        <button
+            type="submit"
+            class="btn btn-primary btn-block"
+        >
+            Save
+        </button>
     </form>
 @endsection()

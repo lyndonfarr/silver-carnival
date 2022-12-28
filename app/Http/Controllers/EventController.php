@@ -6,7 +6,9 @@ use App\Event;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Http\Requests\Event\Store;
 use App\Http\Requests\Event\Update;
+use Illuminate\Http\RedirectResponse;
 
 class EventController extends Controller
 {
@@ -27,6 +29,29 @@ class EventController extends Controller
             ->toArray();
 
         return view('event.index')->with(compact('days'));
+    }
+
+    /**
+     * Display the Event:create page
+     * 
+     * @return View
+     */
+    public function create(): View
+    {
+        return view('event.create');
+    }
+
+    /**
+     * Store the Event to DB
+     * 
+     * @param Store $request the Request object
+     * @return RedirectResponse
+     */
+    public function store(Store $request): RedirectResponse
+    {
+        $event = Event::create($request->only(['date', 'description', 'name']));
+
+        return redirect()->action('EventController@show', [$event->id]);
     }
 
     /**

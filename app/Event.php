@@ -17,4 +17,15 @@ class Event extends Model
         'date',
         'updated_at',
     ];
+    
+    /** 
+     * The editable model attributes
+     * 
+     * @var array
+     */
+    protected $fillable = [
+        'date',
+        'description',
+        'name',
+    ];
 }
