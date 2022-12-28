@@ -27,14 +27,18 @@ class AddressController extends Controller
             })
             ->sortBy('name')
             ->values();
-
+        
         $linkedContacts = $contacts
             ->filter(function (array $contact) use ($request) {
-                return in_array($contact['id'], $request->contact_id);
+                if (is_array($request->contact_id)) {
+                    return in_array($contact['id'], $request->contact_id);
+                }
+
+                return $contact['id'] == $request->contact_id;
             })
             ->values();
-
-        return view('address.create', compact('contacts', 'linkedContacts'));
+        
+        return view('address.create')->with(compact('contacts', 'linkedContacts'));
     }
 
     public function store(Store $request)
@@ -47,6 +51,16 @@ class AddressController extends Controller
             'post_code' => $request->post_code,
             'state' => $request->state,
         ]);
+
         $address->contacts()->attach($request->contact_id);
+
+        return view('address.show')->with(compact('address'));
+    }
+
+    public function show(Request $request, int $addressId): View
+    {
+        $address = Address::findOrFail($addressId);
+
+        return view('address.show')->with(compact('address'));
     }
 }

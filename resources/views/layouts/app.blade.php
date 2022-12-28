@@ -17,6 +17,14 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a
+                                class="nav-link {{ Route::is('addresses.create') ? 'active' : '' }}"
+                                href="{{ route('addresses.create') }}"
+                            >
+                                Addresses
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
                                 class="nav-link {{ Route::is(['contacts.create', 'contacts.edit', 'contacts.index', 'contacts.show', 'contact-extras.edit']) ? 'active' : '' }}"
                                 href="{{ route('contacts.index') }}"
                             >

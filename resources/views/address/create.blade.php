@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.address')
 
-@section('content')
-    <form method="POST" action="{{url('addresses')}}">
+@section('addressContent')
+    <form method="POST" action="{{ route('addresses.store') }}">
         @csrf
-        <div class="card">
+        <div class="card mb-4">
             <div class="card-header">Create Address</div>
             <div class="card-body">
                 <div class="form-row">
@@ -77,14 +77,12 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer">
-                <button
-                    type="submit"
-                    class="btn btn-primary btn-block"
-                >
-                    Save
-                </button>
-            </div>
         </div>
+        <button
+            type="submit"
+            class="btn btn-primary btn-block"
+        >
+            Save
+        </button>
     </form>
 @endsection
