@@ -29,6 +29,7 @@ import TextareaInput from './components/Form/TextareaInput.vue';
 import TextInput from './components/Form/TextInput.vue';
 
 import CalendarIcon from './components/Icons/CalendarIcon.vue';
+import SearchIcon from './components/Icons/SearchIcon.vue';
 
 import ValueStorage from './components/Utilities/ValueStorage.vue';
 import Vue from 'vue';
@@ -53,6 +54,7 @@ const app = new Vue({
         IndexButton,
         InstagramButton,
         PhoneInput,
+        SearchIcon,
         ShowButton,
         TextareaInput,
         TextInput,

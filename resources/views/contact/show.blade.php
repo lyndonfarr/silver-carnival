@@ -31,7 +31,7 @@
 @endif
 
 @if (count($contact->addresses))
-<div class="card">
+<div class="card mb-4">
     <div class="card-header">Addresses</div>
     <ul class="list-group list-group-flush">
         @foreach ($contact->addresses as $address)
@@ -42,7 +42,5 @@
     </ul>
 </div>
 @endif
-
-<a href="{{ route('addresses.create', ['contact_id' => $contact->id]) }}" class="btn btn-block btn-success">Add address</a>
 
 @endsection
