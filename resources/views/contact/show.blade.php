@@ -35,9 +35,17 @@
     <div class="card-header">Addresses</div>
     <ul class="list-group list-group-flush">
         @foreach ($contact->addresses as $address)
-            <address-list-item-show
-                :address="{{ $address }}"
-            ></address-list-item-show>
+            <li class="list-group-item d-flex align-items-start">
+                <p class="mb-0">{{ $address->full_string }}</p>
+                <show-button
+                    class="ml-auto"
+                    route="{{ route('addresses.show', $address->id) }}"
+                ></show-button>
+                <edit-button
+                    class="ml-2"
+                    route="{{ route('addresses.edit', $address->id) }}"
+                ></edit-button>
+            </li>
         @endforeach
     </ul>
 </div>
