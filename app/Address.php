@@ -42,4 +42,22 @@ class Address extends Model
     {
         return $this->belongsToMany(Contact::class);
     }
+
+    //=======
+    //<ACCESSORS>
+    //=======
+    /**
+     * Concat line_1, line_2, city, state, post_code, and country column into one string
+     * 
+     * @return string
+     */
+    public function getFullStringAttribute(): string
+    {
+        return collect([$this->line_1, $this->line_2, $this->city, $this->state, $this->post_code, $this->country])
+            ->filter()
+            ->implode(', ');
+    }
+    //=======
+    //</ACCESSORS>
+    //=======
 }
