@@ -5,7 +5,13 @@
         @csrf
         @method('PATCH')
         <div class="card mb-4">
-            <div class="card-header">Edit Address</div>
+            <div class="card-header d-flex">
+                Edit Address
+                <show-button
+                    class="ml-auto"
+                    route="{{ route('addresses.show', $address->id) }}"
+                ></show-button>
+            </div>
             <div class="card-body">
                 <div class="form-row">
                     <text-input

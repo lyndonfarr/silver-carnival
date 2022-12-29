@@ -36,11 +36,11 @@
     <ul class="list-group list-group-flush">
         @foreach ($contact->addresses as $address)
             <li class="list-group-item d-flex align-items-start">
-                <p class="mb-0">{{ $address->full_string }}</p>
-                <show-button
+                <p class="mb-0"><a class="text-dark" href="{{ route('addresses.show', $address->id) }}">{{ $address->full_string }}</a></p>
+                <edit-button
                     class="ml-auto"
-                    route="{{ route('addresses.show', $address->id) }}"
-                ></show-button>
+                    route="{{ route('addresses.edit', $address->id) }}"
+                ></edit-button>
             </li>
         @endforeach
     </ul>
