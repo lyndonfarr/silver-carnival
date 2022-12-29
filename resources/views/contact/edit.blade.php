@@ -122,15 +122,13 @@
                 </a>
             </div>
             <ul class="list-group list-group-flush" v-if="storedValue.contact.addresses.length || storedValue.newAddresses.length">
-                <li class="list-group-item" v-for="(address, index) in storedValue.contact.addresses">
-                    <div class="d-flex align-items-start">
-                        <p class="mb-0">@{{ address.full_string }}</p>
-                        <api-destroy-button
-                            class="ml-auto"
-                            @destroyed="e => storedValue.contact.addresses = [...storedValue.contact.addresses.slice(0, index), ...storedValue.contact.addresses.slice(index + 1, storedValue.contact.addresses.length)]"
-                            :endpoint="`/api/address-contact/${address.id}/${storedValue.contact.id}`"
-                        ></api-destroy-button>
-                    </div>
+                <li class="list-group-item d-flex align-items-start" v-for="(address, index) in storedValue.contact.addresses">
+                    <p class="mb-0">@{{ address.full_string }}</p>
+                    <api-destroy-button
+                        class="ml-auto"
+                        @destroyed="e => storedValue.contact.addresses = [...storedValue.contact.addresses.slice(0, index), ...storedValue.contact.addresses.slice(index + 1, storedValue.contact.addresses.length)]"
+                        :endpoint="`/api/address-contact/${address.id}/${storedValue.contact.id}`"
+                    ></api-destroy-button>
                 </li>
                 <li class="list-group-item d-flex align-items-start" v-for="(newAddress, index) in storedValue.newAddresses">
                     <div class="w-100">
