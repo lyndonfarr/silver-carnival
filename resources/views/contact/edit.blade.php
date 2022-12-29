@@ -121,15 +121,10 @@
                     <search-icon></search-icon>
                 </a>
             </div>
-            <ul class="list-group list-group-flush" v-if="storedValue.contact.addresses.length">
+            <ul class="list-group list-group-flush" v-if="storedValue.contact.addresses.length || storedValue.newAddresses.length">
                 <li class="list-group-item" v-for="(address, index) in storedValue.contact.addresses">
                     <div class="d-flex align-items-start">
-                        <div class="flex-column align-items-start">
-                            <p class="mb-0">@{{ `${address.line_1},` }}@{{ address.line_2 ? ` ${address.line_2},` : '' }}</p>
-                            <p class="mb-0">@{{ address.city ? `${address.city},` : '' }}@{{ address.state ? ` ${address.state}` : '' }}</p>
-                            <p class="mb-0">@{{ address.post_code }}</p>
-                            <p class="mb-0">@{{ address.country }}</p>
-                        </div>
+                        <p class="mb-0">@{{ address.full_string }}</p>
                         <api-destroy-button
                             class="ml-auto"
                             @destroyed="e => storedValue.contact.addresses = [...storedValue.contact.addresses.slice(0, index), ...storedValue.contact.addresses.slice(index + 1, storedValue.contact.addresses.length)]"
@@ -137,8 +132,6 @@
                         ></api-destroy-button>
                     </div>
                 </li>
-            </ul>
-            <ul class="list-group list-group-flush" v-if="storedValue.newAddresses.length">
                 <li class="list-group-item d-flex align-items-start" v-for="(newAddress, index) in storedValue.newAddresses">
                     <div class="w-100">
                         <div class="form-row">
