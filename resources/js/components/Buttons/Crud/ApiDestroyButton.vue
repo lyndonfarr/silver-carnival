@@ -27,6 +27,10 @@ export default {
 
     methods: {
         destroy() {
+            if (!confirm('You are about to remove an entry from the database. Are you sure you want to do this?')) {
+                return;
+            }
+            
             axios
                 .delete(this.endpoint)
                 .then(res => this.$emit('destroyed'))
