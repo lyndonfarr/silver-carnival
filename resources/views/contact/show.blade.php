@@ -41,10 +41,6 @@
                     class="ml-auto"
                     route="{{ route('addresses.show', $address->id) }}"
                 ></show-button>
-                <edit-button
-                    class="ml-2"
-                    route="{{ route('addresses.edit', $address->id) }}"
-                ></edit-button>
             </li>
         @endforeach
     </ul>

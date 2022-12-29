@@ -74,7 +74,7 @@ class AddressController extends Controller
      */
     public function show(Request $request, int $addressId): View
     {
-        $address = Address::findOrFail($addressId);
+        $address = Address::with('contacts')->findOrFail($addressId);
 
         return view('address.show')->with(compact('address'));
     }
