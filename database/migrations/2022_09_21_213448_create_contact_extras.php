@@ -20,7 +20,6 @@ class CreateContactExtras extends Migration
             $table->string('type')->nullable(false);
             $table->string('value')->nullable(false);
             $table->boolean('primary')->default(false);
-            $table->boolean('current')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

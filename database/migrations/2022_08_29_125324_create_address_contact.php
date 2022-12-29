@@ -20,7 +20,6 @@ class CreateAddressContact extends Migration
             $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
             $table->unsignedBigInteger('contact_id');
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
-            $table->boolean('current')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });
