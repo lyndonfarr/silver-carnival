@@ -45,6 +45,12 @@ class Update extends FormRequest
             }
         }
 
+        if (isset($this->found_address_id)) {
+            foreach ($this->found_address_id as $key => $foundAddressId) {
+                $rules["found_address_id.{$key}"] = 'required|integer|max:99999999999|exists:addresses,id';
+            }
+        }
+
         if (isset($this->new_addresses)) {
             foreach ($this->new_addresses as $index => $newAddress) {
                 $rules["new_addresses.{$index}.city"] = 'max:255';

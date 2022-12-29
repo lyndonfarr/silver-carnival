@@ -91,8 +91,15 @@ class ContactController extends Controller
             })
             ->sortBy('name')
             ->values();
-        
-        return view('contact.edit')->with(compact('contact', 'contacts'));
+
+        $addresses = Address::all()
+            ->map(function (Address $address) {
+                return ['id' => $address->id, 'address' => $address->full_string];
+            })
+            ->sortBy('address')
+            ->values();
+
+        return view('contact.edit')->with(compact('addresses', 'contact', 'contacts'));
     }
 
     /**
@@ -124,6 +131,10 @@ class ContactController extends Controller
             }
         }
 
+        if (!empty($request->found_address_id)) {
+            $contact->addresses()->attach($request->found_address_id);
+        }
+
         if (!empty($request->new_addresses)) {
             foreach ($request->new_addresses as $newAddress) {
                 $address = Address::create([
@@ -134,7 +145,7 @@ class ContactController extends Controller
                     'post_code' => $newAddress['post_code'],
                     'state' => $newAddress['state'],
                 ]);
-                $contact->addresses()->attach($address);
+                $contact->addresses()->attach($address->id);
             }
         }
 

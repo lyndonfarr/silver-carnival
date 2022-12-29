@@ -5,6 +5,7 @@ import CountryInput from '../Form/CountryInput.vue'
 import CreateIcon from '../Icons/CreateIcon.vue';
 import DateInput from '../Form/DateInput.vue';
 import DestroyIcon from '../Icons/DestroyIcon.vue';
+import SearchIcon from '../Icons/SearchIcon.vue';
 import ShowButton from '../Buttons/Crud/ShowButton.vue';
 import TextareaInput from '../Form/TextareaInput.vue';
 import TextInput from '../Form/TextInput.vue';
@@ -19,6 +20,7 @@ export default {
         CountryInput,
         DateInput,
         DestroyIcon,
+        SearchIcon,
         ShowButton,
         TextareaInput,
         TextInput,

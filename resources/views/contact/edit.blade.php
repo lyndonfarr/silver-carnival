@@ -4,9 +4,12 @@
 <value-storage
     inline-template
     :default-stored-value="{
-        contact: {{ $contact }},
+        addressFinderOpened: false,
+        allAddresses: {{ $addresses }},
         allContacts: {{ $contacts }},
+        contact: {{ $contact }},
         newAddresses: [],
+        foundAddresses: [],
         newContactExtras: [],
     }"
 >
@@ -114,13 +117,16 @@
                 <a class="ml-auto text-success" @click.prevent="e => storedValue.newAddresses = [...storedValue.newAddresses, {city: '', country: '', line_1: '', line_2: '', linked_contacts: [], post_code: '', state: '', key: storedValue.newAddresses.length}]" href="">
                     <create-icon></create-icon>
                 </a>
+                <a href="" class="ml-2 text-success" @click.prevent="e => storedValue.addressFinderOpened = true">
+                    <search-icon></search-icon>
+                </a>
             </div>
             <ul class="list-group list-group-flush" v-if="storedValue.contact.addresses.length">
                 <li class="list-group-item" v-for="(address, index) in storedValue.contact.addresses">
                     <div class="d-flex align-items-start">
                         <div class="flex-column align-items-start">
                             <p class="mb-0">@{{ `${address.line_1},` }}@{{ address.line_2 ? ` ${address.line_2},` : '' }}</p>
-                            <p class="mb-0">@{{ `${address.city},` }}@{{ address.state ? ` ${address.state}` : '' }}</p>
+                            <p class="mb-0">@{{ address.city ? `${address.city},` : '' }}@{{ address.state ? ` ${address.state}` : '' }}</p>
                             <p class="mb-0">@{{ address.post_code }}</p>
                             <p class="mb-0">@{{ address.country }}</p>
                         </div>
@@ -185,6 +191,34 @@
                     </a>
                 </li>
             </ul>
+            <div class="card-body" v-if="storedValue.addressFinderOpened">
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="typo__label" for="found_address_id">Find Addresses</label>
+                            <multiselect
+                                :allow-empty="false"
+                                :clear-on-select="false"
+                                :hide-selected="true"
+                                id="found_address_id"
+                                label="address"
+                                :multiple="true"
+                                :options="storedValue.allAddresses"
+                                placeholder="Find Addresses"
+                                track-by="id"
+                                v-model="storedValue.foundAddresses"
+                            ></multiselect>
+                            <input
+                                hidden
+                                :key="foundAddress.id"
+                                name="found_address_id[]"
+                                :value="foundAddress.id"
+                                v-for="foundAddress in storedValue.foundAddresses"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <button class="btn btn-primary btn-block">Save</button>
