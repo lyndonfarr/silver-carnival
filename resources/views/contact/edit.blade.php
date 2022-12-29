@@ -50,8 +50,7 @@
 
         <div class="card mb-4">
             <div class="card-header d-flex">
-                <span v-if="storedValue.contact.contact_extras.length || storedValue.newContactExtras.length">Edit ContactExtras</span>
-                <span v-else>Create ContactExtras</span>
+                <span>ContactExtras</span>
                 <contact-extra-add-button
                     @input="e => storedValue.newContactExtras = [...storedValue.newContactExtras, {type: e, value: '', key: storedValue.newContactExtras.length}]"
                 ></contact-extra-add-button>
@@ -104,6 +103,30 @@
                     >
                 </div>
             </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header d-flex">
+                Addresses
+            </div>
+            <ul class="list-group list-group-flush">
+                @foreach ($contact->addresses as $address)
+                <li class="list-group-item">
+                    <div class="d-flex align-items-start">
+                        <div class="flex-column align-items-start">
+                            <p class="mb-0">{{ $address->line_1 }}, {{ $address->line_2 ? " {$address->line_2}," : '' }}</p>
+                            <p class="mb-0">{{ $address->city }}, {{ $address->state ? " {$address->state}" : '' }}</p>
+                            <p class="mb-0">{{ $address->post_code }}</p>
+                            <p class="mb-0">{{ $address->country }}</p>
+                        </div>
+                        <api-destroy-button
+                            class="ml-auto"
+                            endpoint="{{ route('addresses-contacts.destroy', ['addressId' => $address->id, 'contactId' => $contact->id]) }}"
+                        ></api-destroy-button>
+                    </div>
+                </li>
+                @endforeach
+            </ul>
         </div>
 
         <button class="btn btn-primary btn-block">Save</button>
