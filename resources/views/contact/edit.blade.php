@@ -5,6 +5,8 @@
     inline-template
     :default-stored-value="{
         contact: {{ $contact }},
+        allContacts: {{ $contacts }},
+        newAddresses: [],
         newContactExtras: [],
     }"
 >
@@ -52,6 +54,7 @@
             <div class="card-header d-flex">
                 <span>ContactExtras</span>
                 <contact-extra-add-button
+                    class="ml-auto"
                     @input="e => storedValue.newContactExtras = [...storedValue.newContactExtras, {type: e, value: '', key: storedValue.newContactExtras.length}]"
                 ></contact-extra-add-button>
             </div>
@@ -107,25 +110,80 @@
 
         <div class="card mb-4">
             <div class="card-header d-flex">
-                Addresses
+                <span>Addresses</span>
+                <a class="ml-auto text-success" @click.prevent="e => storedValue.newAddresses = [...storedValue.newAddresses, {city: '', country: '', line_1: '', line_2: '', linked_contacts: [], post_code: '', state: '', key: storedValue.newAddresses.length}]" href="">
+                    <create-icon></create-icon>
+                </a>
             </div>
-            <ul class="list-group list-group-flush">
-                @foreach ($contact->addresses as $address)
-                <li class="list-group-item">
+            <ul class="list-group list-group-flush" v-if="storedValue.contact.addresses.length">
+                <li class="list-group-item" v-for="(address, index) in storedValue.contact.addresses">
                     <div class="d-flex align-items-start">
                         <div class="flex-column align-items-start">
-                            <p class="mb-0">{{ $address->line_1 }}, {{ $address->line_2 ? " {$address->line_2}," : '' }}</p>
-                            <p class="mb-0">{{ $address->city }}, {{ $address->state ? " {$address->state}" : '' }}</p>
-                            <p class="mb-0">{{ $address->post_code }}</p>
-                            <p class="mb-0">{{ $address->country }}</p>
+                            <p class="mb-0">@{{ `${address.line_1},` }}@{{ address.line_2 ? ` ${address.line_2},` : '' }}</p>
+                            <p class="mb-0">@{{ `${address.city},` }}@{{ address.state ? ` ${address.state}` : '' }}</p>
+                            <p class="mb-0">@{{ address.post_code }}</p>
+                            <p class="mb-0">@{{ address.country }}</p>
                         </div>
                         <api-destroy-button
                             class="ml-auto"
-                            endpoint="{{ route('addresses-contacts.destroy', ['addressId' => $address->id, 'contactId' => $contact->id]) }}"
+                            @destroyed="e => storedValue.contact.addresses = [...storedValue.contact.addresses.slice(0, index), ...storedValue.contact.addresses.slice(index + 1, storedValue.contact.addresses.length)]"
+                            :endpoint="`/api/address-contact/${address.id}/${storedValue.contact.id}`"
                         ></api-destroy-button>
                     </div>
                 </li>
-                @endforeach
+            </ul>
+            <ul class="list-group list-group-flush" v-if="storedValue.newAddresses.length">
+                <li class="list-group-item d-flex align-items-start" v-for="(newAddress, index) in storedValue.newAddresses">
+                    <div class="w-100">
+                        <div class="form-row">
+                            <text-input
+                                class="col-md-4"
+                                label="Line 1"
+                                :name="`new_addresses[${newAddress.key}][line_1]`"
+                                v-model="storedValue.newAddresses[index].line_1"
+                            ></text-input>
+                            <text-input
+                                class="col-md-4"
+                                label="Line 2"
+                                :name="`new_addresses[${newAddress.key}][line_2]`"
+                                v-model="storedValue.newAddresses[index].line_2"
+                            ></text-input>
+                            <text-input
+                                class="col-md-4"
+                                label="City"
+                                :name="`new_addresses[${newAddress.key}][city]`"
+                                v-model="storedValue.newAddresses[index].city"
+                            ></text-input>
+                        </div>
+                        <div class="form-row">
+                            <text-input
+                                class="col-md-4"
+                                label="State"
+                                :name="`new_addresses[${newAddress.key}][state]`"
+                                v-model="storedValue.newAddresses[index].state"
+                            ></text-input>
+                            <text-input
+                                class="col-md-4"
+                                label="Country"
+                                :name="`new_addresses[${newAddress.key}][country]`"
+                                v-model="storedValue.newAddresses[index].country"
+                            ></text-input>
+                            <text-input
+                                class="col-md-4"
+                                label="Post Code"
+                                :name="`new_addresses[${newAddress.key}][post_code]`"
+                                v-model="storedValue.newAddresses[index].post_code"
+                            ></text-input>
+                        </div>
+                    </div>
+                    <a
+                        class="d-flex align-items-center text-danger ml-2"
+                        @click="e => storedValue.newAddresses = [...storedValue.newAddresses.slice(0, index), ...storedValue.newAddresses.slice(index + 1, storedValue.newAddresses.length)]"
+                        style="cursor: pointer;"
+                    >
+                        <destroy-icon></destroy-icon>
+                    </a>
+                </li>
             </ul>
         </div>
 

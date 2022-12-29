@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
 use App\Contact;
 use App\ContactExtra;
 use Illuminate\View\View;
@@ -83,8 +84,15 @@ class ContactController extends Controller
     public function edit(Request $request, int $id): View
     {
         $contact = Contact::with(['addresses', 'contactExtras'])->findOrFail($id);
+
+        $contacts = Contact::all()
+            ->map(function (Contact $contact) {
+                return ['id' => $contact->id, 'name' => $contact->full_name];
+            })
+            ->sortBy('name')
+            ->values();
         
-        return view('contact.edit')->with(compact('contact'));
+        return view('contact.edit')->with(compact('contact', 'contacts'));
     }
 
     /**
@@ -113,6 +121,20 @@ class ContactController extends Controller
                     'value' => $newContactExtra['value'],
                 ]);
                 $contact->contactExtras()->save($contactExtra);
+            }
+        }
+
+        if (!empty($request->new_addresses)) {
+            foreach ($request->new_addresses as $newAddress) {
+                $address = Address::create([
+                    'city' => $newAddress['city'],
+                    'country' => $newAddress['country'],
+                    'line_1' => $newAddress['line_1'],
+                    'line_2' => $newAddress['line_2'],
+                    'post_code' => $newAddress['post_code'],
+                    'state' => $newAddress['state'],
+                ]);
+                $contact->addresses()->attach($address);
             }
         }
 

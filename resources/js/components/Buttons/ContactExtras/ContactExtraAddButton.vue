@@ -1,5 +1,5 @@
 <template>
-    <div class="dropdown ml-auto">
+    <div class="dropdown">
         <create-button
             aria-expanded="false"
             aria-haspopup="true"

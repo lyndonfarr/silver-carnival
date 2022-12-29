@@ -45,6 +45,18 @@ class Update extends FormRequest
             }
         }
 
+        if (isset($this->new_addresses)) {
+            foreach ($this->new_addresses as $index => $newAddress) {
+                $rules["new_addresses.{$index}.city"] = 'max:255';
+                $rules["new_addresses.{$index}.country"] = 'max:255';
+                $rules["new_addresses.{$index}.current"] = 'boolean|nullable';
+                $rules["new_addresses.{$index}.line_1"] = 'max:255';
+                $rules["new_addresses.{$index}.line_2"] = 'max:255';
+                $rules["new_addresses.{$index}.post_code"] = 'max:255';
+                $rules["new_addresses.{$index}.state"] = 'max:255';
+            }
+        }
+
         return array_merge($rules, [
             'dob' => 'date_format:Y-m-d|before:now|nullable',
             'full_name' => 'required|max:255',
