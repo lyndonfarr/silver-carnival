@@ -22,6 +22,7 @@ class ContactController extends Controller
     public function index(): View
     {
         $contacts = Contact::with('primaryPhoneNumber')->get();
+        
         return view('contact.index')->with(compact('contacts'));
     }
 
@@ -68,6 +69,7 @@ class ContactController extends Controller
     public function show(Request $request, int $id): View
     {
         $contact = Contact::findOrFail($id);
+
         return view('contact.show')->with(compact('contact'));
     }
 
@@ -80,7 +82,8 @@ class ContactController extends Controller
      */
     public function edit(Request $request, int $id): View
     {
-        $contact = Contact::with('contactExtras')->findOrFail($id);
+        $contact = Contact::with(['addresses', 'contactExtras'])->findOrFail($id);
+        
         return view('contact.edit')->with(compact('contact'));
     }
 
