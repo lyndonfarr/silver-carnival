@@ -1,5 +1,5 @@
 <template>
-    <a :href="route" title="view">
+    <a :href="route" title="Show">
         <show-icon></show-icon>
     </a>    
 </template>
