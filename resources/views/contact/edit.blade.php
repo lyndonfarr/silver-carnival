@@ -67,6 +67,7 @@
                         <template v-slot:buttons>
                             <api-destroy-button
                                 class="ml-2"
+                                @destroyed="e => storedValue.contact.contact_extras = [...storedValue.contact.contact_extras.slice(0, index), ...storedValue.contact.contact_extras.slice(index + 1, storedValue.contact.contact_extras.length)]"
                                 :endpoint="`/api/contact-extras/${existingContactExtra.id}`"
                             ></api-destroy-button>
                         </template>

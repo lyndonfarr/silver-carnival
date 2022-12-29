@@ -29,7 +29,7 @@ export default {
         destroy() {
             axios
                 .delete(this.endpoint)
-                .then(res => this.$emit('deleted'))
+                .then(res => this.$emit('destroyed'))
                 .catch(err => console.log(err))
             ;
         },
