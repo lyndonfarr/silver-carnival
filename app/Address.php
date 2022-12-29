@@ -34,6 +34,15 @@ class Address extends Model
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'full_string',
+    ];
+
+    /**
      * an Address BelongsToMany Contacts
      * 
      * @return BelongsToMany
