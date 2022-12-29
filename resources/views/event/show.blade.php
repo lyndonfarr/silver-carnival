@@ -4,7 +4,7 @@
 
 <div class="card my-4">
     <div class="card-header d-flex">
-        Event
+        Show Event
         <edit-button
             class="ml-auto"
             route="{{ route('events.edit', $event->id) }}"
