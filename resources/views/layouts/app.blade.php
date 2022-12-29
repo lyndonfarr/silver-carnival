@@ -17,7 +17,7 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a
-                                class="nav-link {{ Route::is(['addresses.create', 'addresses.show']) ? 'active' : '' }}"
+                                class="nav-link {{ Route::is(['addresses.create', 'addresses.edit', 'addresses.show']) ? 'active' : '' }}"
                                 href="{{ route('addresses.create') }}"
                             >
                                 Addresses

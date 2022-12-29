@@ -1,26 +1,30 @@
 @extends('layouts.address')
 
 @section('addressContent')
-    <form method="POST" action="{{ route('addresses.store') }}">
+    <form method="POST" action="{{ route('addresses.update', $address->id) }}">
         @csrf
+        @method('PATCH')
         <div class="card mb-4">
-            <div class="card-header">Create Address</div>
+            <div class="card-header">Edit Address</div>
             <div class="card-body">
                 <div class="form-row">
                     <text-input
                         class="col-md-4"
                         label="Line 1"
                         name="line_1"
+                        value="{{ $address->line_1 }}"
                     ></text-input>
                     <text-input
                         class="col-md-4"
                         label="Line 2"
                         name="line_2"
+                        value="{{ $address->line_2 }}"
                     ></text-input>
                     <text-input
                         class="col-md-4"
                         label="City"
                         name="city"
+                        value="{{ $address->city }}"
                     ></text-input>
                 </div>
                 <div class="form-row">
@@ -28,16 +32,19 @@
                         class="col-md-4"
                         label="State"
                         name="state"
+                        value="{{ $address->state }}"
                     ></text-input>
                     <text-input
                         class="col-md-4"
                         label="Country"
                         name="country"
+                        value="{{ $address->country }}"
                     ></text-input>
                     <text-input
                         class="col-md-4"
                         label="Post Code"
                         name="post_code"
+                        value="{{ $address->post_code }}"
                     ></text-input>
                 </div>
                 <div class="form-row">
