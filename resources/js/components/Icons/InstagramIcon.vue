@@ -1,8 +1,8 @@
 <template>
     <svg
         viewBox="0 0 24 24"
-        width="24"
-        height="24"
+        :width="width"
+        :height="height"
         stroke="currentColor"
         stroke-width="2"
         fill="none"
@@ -15,3 +15,22 @@
         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
     </svg>
 </template>
+
+<script>
+export default {
+    name: 'InstagramIcon',
+
+    props: {
+        height: {
+            default: 24,
+            required: false,
+            type: Number,
+        },
+        width: {
+            default: 24,
+            required: false,
+            type: Number,
+        },
+    },
+}
+</script>

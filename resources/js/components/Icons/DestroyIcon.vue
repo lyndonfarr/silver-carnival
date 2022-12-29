@@ -1,11 +1,8 @@
 <template>
     <svg
-        viewBox="0
-        0
-        24
-        24"
-        width="24"
-        height="24"
+        viewBox="0 0 24 24"
+        :width="width"
+        :height="height"
         stroke="currentColor"
         stroke-width="2"
         fill="none"

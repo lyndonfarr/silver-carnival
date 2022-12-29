@@ -10,14 +10,14 @@
         stroke-linejoin="round"
         class="css-i6dzq1"
     >
-        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
     </svg>
 </template>
 
 <script>
 export default {
-    name: 'EditIcon',
+    name: 'SearchIcon',
 
     props: {
         height: {
