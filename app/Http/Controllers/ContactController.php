@@ -34,7 +34,21 @@ class ContactController extends Controller
      */
     public function create(): View
     {
-        return view('contact.create');
+        $contacts = Contact::all()
+            ->map(function (Contact $contact) {
+                return ['id' => $contact->id, 'name' => $contact->full_name];
+            })
+            ->sortBy('name')
+            ->values();
+
+        $addresses = Address::all()
+            ->map(function (Address $address) {
+                return ['id' => $address->id, 'address' => $address->full_string];
+            })
+            ->sortBy('address')
+            ->values();
+
+        return view('contact.create')->with(compact('addresses', 'contacts'));
     }
 
     /**
@@ -45,17 +59,35 @@ class ContactController extends Controller
      */
     public function store(Store $request): RedirectResponse
     {
-        $contact = Contact::create([
-            'full_name' => $request->full_name,
-            'notes' => $request->notes,
-        ]);
+        $contact = Contact::create($request->only(['dob', 'full_name', 'nationality', 'nickname', 'notes']));
 
-        $phone = new ContactExtra([
-            'type' => ContactExtra::TYPE_PHONE,
-            'value' => $request->phone,
-        ]);
-        
-        $contact->contactExtras()->save($phone);
+        if (!empty($request->new_contact_extras)) {
+            foreach ($request->new_contact_extras as $newContactExtra) {
+                $contactExtra = new ContactExtra([
+                    'type' => $newContactExtra['type'],
+                    'value' => $newContactExtra['value'],
+                ]);
+                $contact->contactExtras()->save($contactExtra);
+            }
+        }
+
+        if (!empty($request->found_address_id)) {
+            $contact->addresses()->attach($request->found_address_id);
+        }
+
+        if (!empty($request->new_addresses)) {
+            foreach ($request->new_addresses as $newAddress) {
+                $address = Address::create([
+                    'city' => $newAddress['city'],
+                    'country' => $newAddress['country'],
+                    'line_1' => $newAddress['line_1'],
+                    'line_2' => $newAddress['line_2'],
+                    'post_code' => $newAddress['post_code'],
+                    'state' => $newAddress['state'],
+                ]);
+                $contact->addresses()->attach($address->id);
+            }
+        }
 
         return redirect()->action('ContactController@show', [$contact->id]);
     }
