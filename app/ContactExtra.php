@@ -28,7 +28,6 @@ class ContactExtra extends Model
      */
     protected $fillable = [
         'contact_id',
-        'current',
         'type',
         'value',
     ];
