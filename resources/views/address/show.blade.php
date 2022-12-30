@@ -2,13 +2,7 @@
 
 @section('addressContent')
     <div class="card mb-4">
-        <div class="card-header d-flex">
-            Show Address
-            <edit-button
-                class="ml-auto"
-                route="{{ route('addresses.edit', $address->id) }}"
-            ></edit-button>
-        </div>
+        <div class="card-header">Show Address</div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">Line 1: {{ $address->line_1 }}</li>
             <li class="list-group-item">Line 2: {{ $address->line_2 }}</li>

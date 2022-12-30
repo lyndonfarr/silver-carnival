@@ -6,13 +6,7 @@
     @csrf
     @method('PATCH')
     <div class="card my-4">
-        <div class="card-header d-flex">
-            Edit Event
-            <show-button
-                class="ml-auto"
-                route="{{ route('events.show', $event->id) }}"
-            ></show-button>
-        </div>
+        <div class="card-header">Edit Event</div>
         <div class="card-body">
             <text-input
                 label="Name"

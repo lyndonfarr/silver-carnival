@@ -17,13 +17,7 @@
     @csrf
     @method('PATCH')
         <div class="card my-4">
-            <div class="card-header d-flex">
-                Edit Contact
-                <show-button
-                    class="ml-auto"
-                    route="{{ route('contacts.show', $contact->id) }}"
-                ></show-button>
-            </div>
+            <div class="card-header">Edit Contact</div>
             <div class="card-body">
                 <text-input
                     label="Name"

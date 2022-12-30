@@ -2,13 +2,7 @@
 
 @section('contactContent')
 <div class="card my-4">
-    <div class="card-header d-flex">
-        Show Contact
-        <edit-button
-            class="ml-auto"
-            route="{{ route('contacts.edit', $contact->id) }}"
-        ></edit-button>
-    </div>
+    <div class="card-header">Show Contact</div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item">Name: {{ $contact->full_name }}</li>
         <li class="list-group-item">AKA: {{ $contact->nickname }}</li>
@@ -35,12 +29,8 @@
     <div class="card-header">Addresses</div>
     <ul class="list-group list-group-flush">
         @foreach ($contact->addresses as $address)
-            <li class="list-group-item d-flex align-items-start">
-                <p class="mb-0"><a class="text-dark" href="{{ route('addresses.show', $address->id) }}">{{ $address->full_string }}</a></p>
-                <edit-button
-                    class="ml-auto"
-                    route="{{ route('addresses.edit', $address->id) }}"
-                ></edit-button>
+            <li class="list-group-item">
+                <a class="text-dark" href="{{ route('addresses.show', $address->id) }}">{{ $address->full_string }}</a>
             </li>
         @endforeach
     </ul>

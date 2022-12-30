@@ -27,13 +27,7 @@
         <form method="POST" action="{{ route('contacts.store') }}">
         @csrf
             <div class="card my-4">
-                <div class="card-header d-flex">
-                    Index Contacts
-                    <index-button
-                        class="ml-auto"
-                        route="{{ route('contacts.index') }}"
-                    ></index-button>
-                </div>
+                <div class="card-header">Index Contacts</div>
                 <div class="card-body">
                     <text-input
                         label="Name"
