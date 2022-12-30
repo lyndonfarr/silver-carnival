@@ -40,6 +40,8 @@ class EventController extends Controller
     {
         $events = Event::query()
             ->whereDate('date', '>=', Carbon::now()->toDateString())
+            ->orderBy('date', 'asc')
+            ->orderBy('created_at', 'asc')
             ->get();
 
         return view('event.index')->with(compact('events'));

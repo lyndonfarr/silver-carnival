@@ -22,7 +22,9 @@ class ContactController extends Controller
      */
     public function index(): View
     {
-        $contacts = Contact::all();
+        $contacts = Contact::orderBy('first_name', 'asc')
+            ->orderBy('last_name', 'asc')
+            ->get();
         
         return view('contact.index')->with(compact('contacts'));
     }
