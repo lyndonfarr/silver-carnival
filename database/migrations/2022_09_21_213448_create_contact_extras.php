@@ -19,7 +19,6 @@ class CreateContactExtras extends Migration
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
             $table->string('type')->nullable(false);
             $table->string('value')->nullable(false);
-            $table->boolean('primary')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });
