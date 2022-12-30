@@ -6,10 +6,14 @@
     <div class="card-header">Index Contacts</div>
     <ul class="list-group list-group-flush">
         @foreach($contacts as $contact)
-            <contact-list-item
-                :contact="{{ $contact }}"
-                show-route="{{ route('contacts.show', $contact->id) }}"
-            ></contact-list-item>
+            <li class="list-group-item">
+                <a class="text-dark" href="{{ route('contacts.show', $contact->id) }}">
+                    {{ $contact->full_name }}
+                    @if(isset($contact->nickname))
+                        <span class="text-muted"> ({{ $contact->nickname }})</span>
+                    @endif
+                </a>
+            </li>
         @endforeach
     </ul>
 </div>
