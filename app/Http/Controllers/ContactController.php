@@ -22,7 +22,7 @@ class ContactController extends Controller
      */
     public function index(): View
     {
-        $contacts = Contact::with('primaryPhoneNumber')->get();
+        $contacts = Contact::all();
         
         return view('contact.index')->with(compact('contacts'));
     }
