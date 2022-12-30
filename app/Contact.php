@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -155,4 +156,27 @@ class Contact extends Model
     //=======
     //</ACCESSORS>
     //=======
+
+    /**
+     * Find Contacts using a generic 'Search'.
+     * Finds based on first_name, last_name, middle_names and nickname.
+     * 
+     * @param Builder $query The query passed in to perform the find on
+     * @return Builder
+     */
+    public function scopeFindSearch(Builder $query): Builder
+    {
+        return $query->when(request('search'), function (Builder $query) {
+            $search = str_replace(' ', '%', request('search'));
+
+            /**
+             * @todo make this more efficient; shouldn't need the two separate raw methods for names.
+             */
+            return $query
+                ->whereRaw("CONCAT(first_name, ' ', last_name) LIKE '%" . $search . "%' ")
+                ->orWhereRaw("CONCAT(first_name, REPLACE(middle_names, ' ', ''), last_name) LIKE '%" . $search . "%' ")
+                ->orWhereRaw("REPLACE(notes, ' ', '') LIKE '%" . $search . "%' ")
+                ->orWhere('nickname', 'like', $search);
+        });
+    }
 }
