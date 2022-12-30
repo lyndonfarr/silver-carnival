@@ -75,31 +75,31 @@ class Contact extends Model
         return $this->hasMany(ContactExtra::class);
     }
 
-    /**
-     * a Contact hasOne currentPhoneNumber
-     * 
-     * @return HasOne
-     */
-    public function primaryPhoneNumber(): HasOne
-    {
-        return $this->hasOne(ContactExtra::class)->where([
-            'primary' => true,
-            'type' => ContactExtra::TYPE_PHONE,
-        ]);
-    }
+    // /**
+    //  * a Contact hasOne primaryPhoneNumber
+    //  * 
+    //  * @return HasOne
+    //  */
+    // public function primaryPhoneNumber(): HasOne
+    // {
+    //     return $this->hasOne(ContactExtra::class)->where([
+    //         'primary' => true,
+    //         'type' => ContactExtra::TYPE_PHONE,
+    //     ]);
+    // }
 
-    /**
-     * a Contact hasOne primaryInstagram
-     * 
-     * @return HasOne
-     */
-    public function primaryInstagram(): HasOne
-    {
-        return $this->hasOne(ContactExtra::class)->where([
-            'primary' => true,
-            'type' => ContactExtra::TYPE_INSTAGRAM,
-        ]);
-    }
+    // /**
+    //  * a Contact hasOne primaryInstagram
+    //  * 
+    //  * @return HasOne
+    //  */
+    // public function primaryInstagram(): HasOne
+    // {
+    //     return $this->hasOne(ContactExtra::class)->where([
+    //         'primary' => true,
+    //         'type' => ContactExtra::TYPE_INSTAGRAM,
+    //     ]);
+    // }
     //=======
     //</RELATIONSHIPS>
     //=======
