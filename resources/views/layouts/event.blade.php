@@ -17,7 +17,14 @@
         <form class="form-inline ml-auto">
             <div class="form-group mx-sm-3">
                 <label for="search" class="sr-only">Search</label>
-                <input type="text" class="form-control" id="search" placeholder="Search...">
+                <input
+                    class="form-control"
+                    id="search"
+                    name="search"
+                    placeholder="Search..."
+                    type="text"
+                    value="{{ Request::get('search') }}"
+                >
             </div>
             <button type="submit" class="btn btn-dark">Search</button>
         </form>

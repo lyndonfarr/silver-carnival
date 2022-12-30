@@ -39,6 +39,7 @@ class EventController extends Controller
     public function index(Request $request): View
     {
         $events = Event::query()
+            ->findSearch()
             ->whereDate('date', '>=', Carbon::now()->toDateString())
             ->orderBy('date', 'asc')
             ->orderBy('created_at', 'asc')
