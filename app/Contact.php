@@ -159,7 +159,7 @@ class Contact extends Model
 
     /**
      * Find Contacts using a generic 'Search'.
-     * Finds based on first_name, last_name, middle_names and nickname.
+     * Finds based on first_name, last_name, middle_names, nickname, and notes.
      * 
      * @param Builder $query The query passed in to perform the find on
      * @return Builder
