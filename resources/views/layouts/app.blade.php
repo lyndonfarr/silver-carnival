@@ -13,7 +13,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <!-- <a class="navbar-brand" href="#">Silver Carnival</a> -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="px-2" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a
