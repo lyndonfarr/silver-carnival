@@ -26,7 +26,7 @@ class Store extends FormRequest
         return [
             'date' => 'date_format:Y-m-d|required',
             'description' => 'max:4095',
-            'name' => 'max:255',
+            'name' => 'max:255|required',
         ];
     }
 }
