@@ -16,6 +16,11 @@
             </li>
         @endforeach
     </ul>
+    @if ($contacts->lastPage() > 1)
+        <div class="card-footer py-0 bg-white d-flex justify-content-center">
+            {{ $contacts->links('contact.paginator', compact('contacts')) }}
+        </div>
+    @endif
 </div>
 
 @endsection

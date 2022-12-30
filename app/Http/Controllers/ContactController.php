@@ -29,7 +29,7 @@ class ContactController extends Controller
             ->findSearch()
             ->orderBy('first_name', 'asc')
             ->orderBy('last_name', 'asc')
-            ->get();
+            ->paginate(20);
         
         return view('contact.index')->with(compact('contacts'));
     }
