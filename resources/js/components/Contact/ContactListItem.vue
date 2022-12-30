@@ -1,6 +1,8 @@
 <template>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-    <a class="text-dark" :href="showRoute" v-text="contact.full_name"></a>
+    <a class="text-dark" :href="showRoute">
+        {{ contact.full_name }}<span class="text-muted" v-if="contact.nickname"> ({{ contact.nickname }})</span>
+    </a>
     <span>
         <whats-app-button
             :phone-number="contact.primary_phone_number.value"
