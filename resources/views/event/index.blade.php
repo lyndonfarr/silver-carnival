@@ -3,7 +3,7 @@
 @section('eventContent')
 
 <div class="card">
-    <div class="card-header">Index Events</div>
+    <div class="card-header bg-white">Index Events</div>
     <ul class="list-group list-group-flush">
         @foreach ($events as $event)
             <li class="list-group-item">

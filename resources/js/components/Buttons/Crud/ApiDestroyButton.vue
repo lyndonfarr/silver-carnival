@@ -1,6 +1,6 @@
 <template>
     <a
-        class="d-flex align-items-center text-danger"
+        class="d-flex align-items-center text-dark"
         @click="destroy"
         style="cursor: pointer;"
         title="Destroy"

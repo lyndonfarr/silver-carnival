@@ -27,7 +27,7 @@
         <form method="POST" action="{{ route('contacts.store') }}">
         @csrf
             <div class="card my-4">
-                <div class="card-header">Index Contacts</div>
+                <div class="card-header bg-white">Index Contacts</div>
                 <div class="card-body">
                     <text-input
                         label="Name"
@@ -53,7 +53,7 @@
             </div>
 
             <div class="card mb-4">
-                <div class="card-header d-flex">
+                <div class="card-header bg-white d-flex">
                     <span>ContactExtras</span>
                     <contact-extra-add-button
                         class="ml-auto"
@@ -70,7 +70,7 @@
                         >
                             <template v-slot:buttons>
                                 <a
-                                    class="d-flex align-items-center text-danger ml-2"
+                                    class="d-flex align-items-center text-dark ml-2"
                                     @click="e => storedValue.newContactExtras = [...storedValue.newContactExtras.slice(0, index), ...storedValue.newContactExtras.slice(index + 1, storedValue.newContactExtras.length)]"
                                     style="cursor: pointer;"
                                 >
@@ -89,12 +89,12 @@
             </div>
 
             <div class="card mb-4">
-                <div class="card-header d-flex">
+                <div class="card-header bg-white d-flex">
                     <span>Addresses</span>
-                    <a class="ml-auto text-success" @click.prevent="e => storedValue.newAddresses = [...storedValue.newAddresses, {city: '', country: '', line_1: '', line_2: '', linked_contacts: [], post_code: '', state: '', key: storedValue.newAddresses.length}]" href="">
+                    <a class="ml-auto text-dark" @click.prevent="e => storedValue.newAddresses = [...storedValue.newAddresses, {city: '', country: '', line_1: '', line_2: '', linked_contacts: [], post_code: '', state: '', key: storedValue.newAddresses.length}]" href="">
                         <create-icon></create-icon>
                     </a>
-                    <a href="" class="ml-2 text-success" @click.prevent="e => storedValue.addressFinderOpened = !storedValue.addressFinderOpened">
+                    <a href="" class="ml-2 text-dark" @click.prevent="e => storedValue.addressFinderOpened = !storedValue.addressFinderOpened">
                         <search-icon></search-icon>
                     </a>
                 </div>
@@ -143,7 +143,7 @@
                             </div>
                         </div>
                         <a
-                            class="d-flex align-items-center text-danger ml-2"
+                            class="d-flex align-items-center text-dark ml-2"
                             @click="e => storedValue.newAddresses = [...storedValue.newAddresses.slice(0, index), ...storedValue.newAddresses.slice(index + 1, storedValue.newAddresses.length)]"
                             style="cursor: pointer;"
                         >
@@ -181,7 +181,7 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary btn-block">Save</button>
+            <button class="btn btn-dark btn-block">Save</button>
         </form>
     </value-storage>
 @endsection

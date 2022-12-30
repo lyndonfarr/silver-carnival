@@ -6,7 +6,7 @@
     @csrf
     @method('PATCH')
     <div class="card my-4">
-        <div class="card-header">Edit Event</div>
+        <div class="card-header bg-white">Edit Event</div>
         <div class="card-body">
             <text-input
                 label="Name"
@@ -25,7 +25,7 @@
             ></date-input>
         </div>
     </div>
-    <button class="btn btn-primary btn-block">Save</button>
+    <button class="btn btn-dark btn-block">Save</button>
 </form>
 
 @endsection

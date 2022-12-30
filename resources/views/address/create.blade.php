@@ -4,7 +4,7 @@
     <form method="POST" action="{{ route('addresses.store') }}">
         @csrf
         <div class="card mb-4">
-            <div class="card-header">Create Address</div>
+            <div class="card-header bg-white">Create Address</div>
             <div class="card-body">
                 <div class="form-row">
                     <text-input
@@ -80,7 +80,7 @@
         </div>
         <button
             type="submit"
-            class="btn btn-primary btn-block"
+            class="btn btn-dark btn-block"
         >
             Save
         </button>

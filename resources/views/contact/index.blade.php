@@ -3,7 +3,7 @@
 @section('contactContent')
 
 <div class="card">
-    <div class="card-header">Index Contacts</div>
+    <div class="card-header bg-white">Index Contacts</div>
     <ul class="list-group list-group-flush">
         @foreach($contacts as $contact)
             <li class="list-group-item">

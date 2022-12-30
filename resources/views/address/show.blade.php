@@ -2,7 +2,7 @@
 
 @section('addressContent')
     <div class="card mb-4">
-        <div class="card-header">Show Address</div>
+        <div class="card-header bg-white">Show Address</div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">Line 1: {{ $address->line_1 }}</li>
             <li class="list-group-item">Line 2: {{ $address->line_2 }}</li>
@@ -15,7 +15,7 @@
 
     @if (!empty($address->contacts))
         <div class="card">
-            <div class="card-header">Contacts</div>
+            <div class="card-header bg-white">Contacts</div>
             <ul class="list-group list-group-flush">
                 @foreach ($address->contacts as $contact)
                     <li class="list-group-item">

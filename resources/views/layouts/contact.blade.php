@@ -3,14 +3,14 @@
 @section('content')
 
 <nav class="nav nav-pills mb-4 justify-content-center">
-    <a class="nav-link {{ Route::is('contacts.index') ? 'active' : '' }}" href="{{ route('contacts.index') }}">Index</a>
-    <a class="nav-link {{ Route::is('contacts.create') ? 'active' : '' }}" href="{{ route('contacts.create') }}">Create</a>
+    <bs-nav-pill class="{{ Route::is('contacts.index') ? 'active' : '' }}" href="{{ route('contacts.index') }}">Index</bs-nav-pill>
+    <bs-nav-pill class="{{ Route::is('contacts.create') ? 'active' : '' }}" href="{{ route('contacts.create') }}">Create</bs-nav-pill>
     @if (Route::is(['contacts.edit', 'contacts.show']))
-        <a class="nav-link {{ Route::is('contacts.show') ? 'active' : '' }}" href="{{ route('contacts.show', $contact->id) }}">Show</a>
-        <a class="nav-link {{ Route::is('contacts.edit') ? 'active' : '' }}" href="{{ route('contacts.edit', $contact->id) }}">Edit</a>
+        <bs-nav-pill class="{{ Route::is('contacts.show') ? 'active' : '' }}" href="{{ route('contacts.show', $contact->id) }}">Show</bs-nav-pill>
+        <bs-nav-pill class="{{ Route::is('contacts.edit') ? 'active' : '' }}" href="{{ route('contacts.edit', $contact->id) }}">Edit</bs-nav-pill>
     @else
-        <a class="nav-link disabled" href="#">Show</a>
-        <a class="nav-link disabled" href="#">Edit</a>
+        <bs-nav-pill class="disabled" href="#">Show</bs-nav-pill>
+        <bs-nav-pill class="disabled" href="#">Edit</bs-nav-pill>
     @endif
 </nav>
 

@@ -7,6 +7,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 import Multiselect from 'vue-multiselect';
 
+import BsNavPill from './components/BootstrapOverrides/Nav/NavPill.vue';
+
 import InstagramButton from './components/Buttons/ContactExtras/InstagramButton.vue';
 import WhatsAppButton from './components/Buttons/ContactExtras/WhatsAppButton.vue';
 
@@ -39,6 +41,7 @@ const app = new Vue({
     el: '#app',
 
     components: {
+        BsNavPill,
         CalendarIcon,
         ContactFieldListItem,
         ContactExtraListItem,

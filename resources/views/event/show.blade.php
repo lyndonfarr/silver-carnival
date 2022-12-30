@@ -3,7 +3,7 @@
 @section('eventContent')
 
 <div class="card my-4">
-    <div class="card-header">Show Event</div>
+    <div class="card-header bg-white">Show Event</div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item">Time: {{ $event->date->format('H:i:s') }}</li>
         <li class="list-group-item">Date: {{ $event->date->format('l jS \\of F, Y') }}</li>

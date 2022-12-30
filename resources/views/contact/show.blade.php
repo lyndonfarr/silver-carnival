@@ -2,7 +2,7 @@
 
 @section('contactContent')
 <div class="card my-4">
-    <div class="card-header">Show Contact</div>
+    <div class="card-header bg-white">Show Contact</div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item">Name: {{ $contact->full_name }}</li>
         <li class="list-group-item">AKA: {{ $contact->nickname }}</li>
@@ -15,7 +15,7 @@
 
 @if (count($contact->contactExtras))
 <div class="card mb-4">
-    <div class="card-header">ContactExtras</div>
+    <div class="card-header bg-white">ContactExtras</div>
     <ul class="list-group list-group-flush">
         @foreach ($contact->contactExtras as $contactExtra)
             <li class="list-group-item">{{ ucfirst($contactExtra->type) }}: {{ $contactExtra->value }}</li>
@@ -26,7 +26,7 @@
 
 @if (count($contact->addresses))
 <div class="card mb-4">
-    <div class="card-header">Addresses</div>
+    <div class="card-header bg-white">Addresses</div>
     <ul class="list-group list-group-flush">
         @foreach ($contact->addresses as $address)
             <li class="list-group-item">

@@ -16,7 +16,7 @@
     <form method="POST" action="{{ route('events.store') }}">
         @csrf
         <div class="card mb-4">
-            <div class="card-header">Create Event</div>
+            <div class="card-header bg-white">Create Event</div>
             <div class="card-body">
                 <text-input
                     label="Name"
@@ -34,7 +34,7 @@
         </div>
         <button
             type="submit"
-            class="btn btn-primary btn-block"
+            class="btn btn-dark btn-block"
         >
             Save
         </button>

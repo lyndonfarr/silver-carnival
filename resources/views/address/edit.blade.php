@@ -5,7 +5,7 @@
         @csrf
         @method('PATCH')
         <div class="card mb-4">
-            <div class="card-header">Edit Address</div>
+            <div class="card-header bg-white">Edit Address</div>
             <div class="card-body">
                 <div class="form-row">
                     <text-input
@@ -87,7 +87,7 @@
         </div>
         <button
             type="submit"
-            class="btn btn-primary btn-block"
+            class="btn btn-dark btn-block"
         >
             Save
         </button>
