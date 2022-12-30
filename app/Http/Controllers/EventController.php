@@ -12,6 +12,25 @@ use Illuminate\Http\RedirectResponse;
 
 class EventController extends Controller
 {
+    // /**
+    //  * Index all Events, in the form of a calendar
+    //  * 
+    //  * @return View
+    //  */
+    // public function holding(Request $request): View
+    // {
+    //     $days = Event::query()
+    //         ->whereDate('date', '>=', Carbon::now()->toDateString())
+    //         ->get()
+    //         ->groupBy(function (Event $event) {
+    //             $date = new Carbon($event->date);
+    //             return $date->format('l jS \\of F, Y');
+    //         })
+    //         ->toArray();
+
+    //     return view('event.index')->with(compact('days'));
+    // }
+
     /**
      * Index all Events, in the form of a calendar
      * 
@@ -19,16 +38,11 @@ class EventController extends Controller
      */
     public function index(Request $request): View
     {
-        $days = Event::query()
+        $events = Event::query()
             ->whereDate('date', '>=', Carbon::now()->toDateString())
-            ->get()
-            ->groupBy(function (Event $event) {
-                $date = new Carbon($event->date);
-                return $date->format('l jS \\of F, Y');
-            })
-            ->toArray();
+            ->get();
 
-        return view('event.index')->with(compact('days'));
+        return view('event.index')->with(compact('events'));
     }
 
     /**
