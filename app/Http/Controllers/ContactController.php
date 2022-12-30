@@ -7,10 +7,13 @@ use App\Contact;
 use App\ContactExtra;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\Contact\Index;
 use App\Http\Requests\Contact\Store;
 use App\Http\Requests\Contact\Update;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ContactController extends Controller
@@ -22,7 +25,9 @@ class ContactController extends Controller
      */
     public function index(): View
     {
-        $contacts = Contact::orderBy('first_name', 'asc')
+        $contacts = Contact::query()
+            ->findSearch()
+            ->orderBy('first_name', 'asc')
             ->orderBy('last_name', 'asc')
             ->get();
         
