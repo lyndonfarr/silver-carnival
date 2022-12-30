@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
@@ -31,4 +32,22 @@ class Event extends Model
         'description',
         'name',
     ];
+
+    /**
+     * Find Events using a generic 'Search'.
+     * Finds based on name, and description.
+     * 
+     * @param Builder $query The query passed in to perform the find on
+     * @return Builder
+     */
+    public function scopeFindSearch(Builder $query): Builder
+    {
+        return $query->when(request('search'), function (Builder $query) {
+            $search = str_replace(' ', '%', request('search'));
+
+            return $query
+                ->where('name', 'like', $search)
+                ->orWhereRaw("REPLACE(description, ' ', '') LIKE '%" . $search . "%' ");
+        });
+    }
 }
