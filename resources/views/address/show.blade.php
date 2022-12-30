@@ -18,12 +18,8 @@
             <div class="card-header">Contacts</div>
             <ul class="list-group list-group-flush">
                 @foreach ($address->contacts as $contact)
-                    <li class="list-group-item d-flex align-items-start">
-                        <p class="mb-0"><a class="text-dark" href="{{ route('contacts.show', $contact->id) }}">{{ $contact->full_name }}</a></p>
-                        <edit-button
-                            class="ml-auto"
-                            route="{{ route('contacts.edit', $contact->id) }}"
-                        ></edit-button>
+                    <li class="list-group-item">
+                        <a class="text-dark" href="{{ route('contacts.show', $contact->id) }}">{{ $contact->full_name }}</a>
                     </li>
                 @endforeach
             </ul>
