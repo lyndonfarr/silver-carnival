@@ -30,6 +30,10 @@
                     label="Date"
                     name="date"
                 ></date-input>
+                <time-input
+                    label="Time"
+                    name="time"
+                ></time-input>
             </div>
         </div>
         <button

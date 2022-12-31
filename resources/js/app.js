@@ -26,6 +26,7 @@ import DateInput from './components/Form/DateInput.vue';
 import PhoneInput from './components/Form/PhoneInput.vue';
 import TextareaInput from './components/Form/TextareaInput.vue';
 import TextInput from './components/Form/TextInput.vue';
+import TimeInput from './components/Form/TimeInput.vue';
 
 import CalendarIcon from './components/Icons/CalendarIcon.vue';
 import SearchIcon from './components/Icons/SearchIcon.vue';
@@ -56,6 +57,7 @@ const app = new Vue({
         ShowButton,
         TextareaInput,
         TextInput,
+        TimeInput,
         ValueStorage,
         WhatsAppButton,
     },
