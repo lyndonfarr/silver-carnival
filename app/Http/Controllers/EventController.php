@@ -66,7 +66,11 @@ class EventController extends Controller
      */
     public function store(Store $request): RedirectResponse
     {
-        $event = Event::create($request->only(['date', 'description', 'name']));
+        $eventData = $request->only(['date', 'description', 'name']);
+        if (isset($request->time)) {
+            $eventData['date'] .= " {$request->time}";
+        }
+        $event = Event::create($eventData);
 
         return redirect()->action('EventController@show', [$event->id]);
     }
@@ -108,8 +112,12 @@ class EventController extends Controller
      */
     public function update(Update $request, int $id): RedirectResponse
     {
-        $event = Event::find($id);
-        $event->update($request->only(['date', 'description', 'name']));
+        $event = Event::findOrFail($id);
+        $eventData = $request->only(['date', 'description', 'name']);
+        if (isset($request->time)) {
+            $eventData['date'] .= " {$request->time}";
+        }
+        $event->update($eventData);
 
         return redirect()->action('EventController@show', [$event->id]);
     }

@@ -23,6 +23,11 @@
                 name="date"
                 value="{{ $event->date }}"
             ></date-input>
+            <time-input
+                label="Time"
+                name="time"
+                value="{{ $event->date->format('H:i:s') }}"
+            ></time-input>
         </div>
     </div>
     <button class="btn btn-dark btn-block">Save</button>
