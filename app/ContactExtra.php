@@ -9,10 +9,6 @@ class ContactExtra extends Model
 {
     use SoftDeletes;
 
-    const TYPE_EMAIL = 'email';
-    const TYPE_INSTAGRAM = 'instagram';
-    const TYPE_PHONE = 'phone';
-
     /**
      * The attributes that should be mutated to dates.
      *
