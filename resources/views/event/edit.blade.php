@@ -22,22 +22,22 @@
                 <text-input
                     label="Name"
                     name="name"
-                    value="{{ $event->name }}"
+                    value="{{ old('name') ?? $event->name }}"
                 ></text-input>
                 <textarea-input
                     label="Description"
                     name="description"
-                    value="{{ $event->description }}"
+                    value="{{ old('description') ?? $event->description }}"
                 ></textarea-input>
                 <date-input
                     label="Date"
                     name="date"
-                    value="{{ $event->date }}"
+                    value="{{ old('date') ?? $event->date }}"
                 ></date-input>
                 <time-input
                     label="Time"
                     name="time"
-                    value="{{ $event->date->format('H:i:s') }}"
+                    value="{{ old('time') ?? $event->date->format('H:i:s') }}"
                 ></time-input>
             </div>
         </div>

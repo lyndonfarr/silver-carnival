@@ -21,18 +21,22 @@
                 <text-input
                     label="Name"
                     name="name"
+                    value="{{ old('name') }}"
                 ></text-input>
                 <textarea-input
                     label="Description"
                     name="description"
+                    value="{{ old('description') }}"
                 ></textarea-input>
                 <date-input
                     label="Date"
                     name="date"
+                    value="{{ old('date') }}"
                 ></date-input>
                 <time-input
                     label="Time"
                     name="time"
+                    value="{{ old('time') }}"
                 ></time-input>
             </div>
         </div>
