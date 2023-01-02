@@ -11,6 +11,11 @@
             </li>
         @endforeach
     </ul>
+    @if ($events->lastPage() > 1)
+        <div class="card-footer py-0 bg-white d-flex justify-content-center">
+            {{ $events->links('components.paginator', ['results' => $events]) }}
+        </div>
+    @endif
 </div>
 
 @endsection

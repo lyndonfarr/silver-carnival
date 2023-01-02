@@ -76,6 +76,16 @@ class Contact extends Model
         return $this->hasMany(ContactExtra::class);
     }
 
+    /**
+     * A Contact hasMany Birthdays
+     * 
+     * @return HasMany
+     */
+    public function birthdays(): HasMany
+    {
+        return $this->hasMany(Event::class, 'birthday_contact_id');
+    }
+
     // /**
     //  * a Contact hasOne primaryPhoneNumber
     //  * 

@@ -5,10 +5,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Event extends Model
 {
     use SoftDeletes;
+
+    const FINAL_YEAR_FOR_BIRTHDAYS = 2146;
     
     /**
      * The attributes that should be mutated to dates.
@@ -32,6 +35,22 @@ class Event extends Model
         'description',
         'name',
     ];
+    
+    //=======
+    //<RELATIONSHIPS>
+    //=======
+    /**
+     * An Event BelongsTo a BirthdayContact
+     * 
+     * @return BelongsTo
+     */
+    public function birthdayContact(): BelongsTo
+    {
+        return $this->belongsTo(Contact::class);
+    }
+    //=======
+    //</RELATIONSHIPS>
+    //=======
 
     /**
      * Find Events using a generic 'Search'.

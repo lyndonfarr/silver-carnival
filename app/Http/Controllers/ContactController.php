@@ -69,6 +69,7 @@ class ContactController extends Controller
         $contact = Contact::create($request->only(['dob', 'full_name', 'nationality', 'nickname', 'notes']));
 
         if (!empty($request->new_contact_extras)) {
+            //Use insert instead, setting the contactId on the ContactExtras first.
             foreach ($request->new_contact_extras as $newContactExtra) {
                 $contactExtra = new ContactExtra([
                     'type' => $newContactExtra['type'],
@@ -83,6 +84,7 @@ class ContactController extends Controller
         }
 
         if (!empty($request->new_addresses)) {
+            //Use insert instead, setting the contactId on the Addresses first.
             foreach ($request->new_addresses as $newAddress) {
                 $address = Address::create([
                     'city' => $newAddress['city'],

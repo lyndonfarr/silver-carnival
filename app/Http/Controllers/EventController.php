@@ -43,7 +43,7 @@ class EventController extends Controller
             ->whereDate('date', '>=', Carbon::now()->toDateString())
             ->orderBy('date', 'asc')
             ->orderBy('created_at', 'asc')
-            ->get();
+            ->paginate(20);
 
         return view('event.index')->with(compact('events'));
     }
@@ -84,7 +84,7 @@ class EventController extends Controller
      */
     public function show(Request $request, int $id): View
     {
-        $event = Event::findOrFail($id);
+        $event = Event::with('birthdayContact')->findOrFail($id);
 
         return view('event.show')->with(compact('event'));
     }
