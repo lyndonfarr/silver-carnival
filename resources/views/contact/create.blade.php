@@ -27,7 +27,7 @@
         <form method="POST" action="{{ route('contacts.store') }}">
         @csrf
             <div class="card my-4">
-                <div class="card-header bg-white">Index Contacts</div>
+                <div class="card-header bg-white">Create Contact</div>
                 <div class="card-body">
                     <text-input
                         label="Name"
