@@ -1,4 +1,5 @@
 <script>
+import {ucfirst} from '../../filters';
 import ApiDestroyButton from '../Buttons/Crud/ApiDestroyButton.vue';
 import ContactExtraAddButton from '../Buttons/ContactExtras/ContactExtraAddButton.vue';
 import CountryInput from '../Form/CountryInput.vue'
@@ -38,6 +39,10 @@ export default {
             required: false,
             type: String,
         },
+    },
+
+    filters: {
+        ucfirst,
     },
 
     data() {

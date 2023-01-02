@@ -68,7 +68,7 @@
                     <div v-for="(newContactExtra, index) in storedValue.newContactExtras">
                         <text-input
                             :key="`new-contact-extra-${newContactExtra.key}`"
-                            :label="newContactExtra.type"
+                            :label="newContactExtra.type | ucfirst"
                             :name="`new_contact_extras[${newContactExtra.key}][value]`"
                             v-model="storedValue.newContactExtras[index].value"
                         >
