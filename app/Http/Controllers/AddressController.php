@@ -13,37 +13,6 @@ use Illuminate\Http\RedirectResponse;
 class AddressController extends Controller
 {
     /**
-     * Display the Address:create page
-     * 
-     * @param Request $request the Request object
-     * @return View
-     */
-    public function create(Request $request): View
-    {
-        $contacts = Contact::all()
-            ->map(function (Contact $contact) {
-                return [
-                    'id' => $contact->id,
-                    'name' => "{$contact->first_name} {$contact->middle_names} {$contact->last_name}",
-                ];
-            })
-            ->sortBy('name')
-            ->values();
-        
-        $linkedContacts = $contacts
-            ->filter(function (array $contact) use ($request) {
-                if (is_array($request->contact_id)) {
-                    return in_array($contact['id'], $request->contact_id);
-                }
-
-                return $contact['id'] == $request->contact_id;
-            })
-            ->values();
-        
-        return view('address.create')->with(compact('contacts', 'linkedContacts'));
-    }
-
-    /**
      * Store the Address to DB
      * 
      * @param Store $request the Request object
