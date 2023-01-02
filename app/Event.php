@@ -48,6 +48,16 @@ class Event extends Model
     {
         return $this->belongsTo(Contact::class);
     }
+    
+    /**
+     * An Event BelongsTo a RememberedContact
+     * 
+     * @return BelongsTo
+     */
+    public function rememberedContact(): BelongsTo
+    {
+        return $this->belongsTo(Contact::class);
+    }
     //=======
     //</RELATIONSHIPS>
     //=======

@@ -20,6 +20,8 @@ class CreateEvents extends Migration
             $table->dateTime('date')->nullable(false);
             $table->unsignedBigInteger('birthday_contact_id')->nullable();
             $table->foreign('birthday_contact_id')->references('id')->on('contacts')->onDelete('cascade');
+            $table->unsignedBigInteger('remembered_contact_id')->nullable();
+            $table->foreign('remembered_contact_id')->references('id')->on('contacts')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -88,6 +88,16 @@ class Contact extends Model
         return $this->hasMany(ContactExtra::class);
     }
 
+    /**
+     * A Contact hasMany RememberanceDays
+     * 
+     * @return HasMany
+     */
+    public function rememberanceDays(): HasMany
+    {
+        return $this->hasMany(Event::class, 'remembered_contact_id');
+    }
+
     // /**
     //  * a Contact hasOne primaryPhoneNumber
     //  * 
