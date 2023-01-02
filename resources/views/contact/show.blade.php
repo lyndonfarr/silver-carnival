@@ -19,7 +19,11 @@
     <div class="card-header bg-white">ContactExtras</div>
     <ul class="list-group list-group-flush">
         @foreach ($contact->contactExtras as $contactExtra)
-            <li class="list-group-item">{{ ucfirst($contactExtra->type) }}: {{ $contactExtra->value }}</li>
+            @if ($contactExtra->type === 'email')
+                <li class="list-group-item">{{ ucfirst($contactExtra->type) }}: {{ $contactExtra->value }}</li>
+            @else
+                <li class="list-group-item">{{ ucfirst($contactExtra->type) }}: {{ $contactExtra->value }}</li>
+            @endif
         @endforeach
     </ul>
 </div>

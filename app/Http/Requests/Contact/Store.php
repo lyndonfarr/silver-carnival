@@ -27,7 +27,7 @@ class Store extends FormRequest
     {
         $rules = [];
 
-        $contactExtraTypeRule = Rule::in([ContactExtra::TYPE_INSTAGRAM, ContactExtra::TYPE_PHONE]);
+        $contactExtraTypeRule = Rule::in([ContactExtra::TYPE_EMAIL, ContactExtra::TYPE_INSTAGRAM, ContactExtra::TYPE_PHONE]);
         $contactExtraValueRule = 'required|max:255';
 
         if (isset($this->new_contact_extras)) {
