@@ -66,7 +66,7 @@ class ContactController extends Controller
      */
     public function store(Store $request): RedirectResponse
     {
-        $contact = Contact::create($request->only(['dob', 'full_name', 'nationality', 'nickname', 'notes']));
+        $contact = Contact::create($request->only(['dob', 'dod', 'full_name', 'nationality', 'nickname', 'notes']));
 
         if (!empty($request->new_contact_extras)) {
             //Use insert instead, setting the contactId on the ContactExtras first.
@@ -153,7 +153,7 @@ class ContactController extends Controller
     public function update(Update $request, int $id): RedirectResponse
     {
         $contact = Contact::find($id);
-        $contact->update($request->only(['dob', 'full_name', 'nationality', 'nickname', 'notes']));
+        $contact->update($request->only(['dob', 'dod', 'full_name', 'nationality', 'nickname', 'notes']));
 
         if (!empty($request->contact_extras)) {
             foreach ($request->contact_extras as $existingContactExtra) {

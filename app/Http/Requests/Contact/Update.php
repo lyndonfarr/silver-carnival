@@ -65,6 +65,7 @@ class Update extends FormRequest
 
         return array_merge($rules, [
             'dob' => 'date_format:Y-m-d|before:now|nullable',
+            'dod' => 'date_format:Y-m-d|before:now|nullable',
             'full_name' => 'required|max:255',
             'nationality' => 'max:255',
             'nickname' => 'max:255',

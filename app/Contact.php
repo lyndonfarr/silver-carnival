@@ -23,6 +23,7 @@ class Contact extends Model
         'created_at',
         'deleted_at',
         'dob',
+        'dod',
         'updated_at',
     ];
     
@@ -34,6 +35,7 @@ class Contact extends Model
     protected $fillable = [
         'description',
         'dob',
+        'dod',
         'first_name',
         'full_name',
         'last_name',

@@ -21,6 +21,7 @@ class CreateContacts extends Migration
             $table->string('nickname')->nullable();
             $table->string('nationality')->nullable();
             $table->date('dob')->nullable();
+            $table->date('dod')->nullable();
             $table->longText('notes')->nullable();
             $table->timestamps();
             $table->softDeletes();

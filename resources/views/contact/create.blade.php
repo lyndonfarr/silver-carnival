@@ -41,6 +41,10 @@
                         label="DoB"
                         name="dob"
                     ></date-input>
+                    <date-input
+                        label="DoD"
+                        name="dod"
+                    ></date-input>
                     <country-input
                         label="Nationality"
                         name="nationality"

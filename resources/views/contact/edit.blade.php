@@ -34,6 +34,11 @@
                     name="dob"
                     v-model="storedValue.contact.dob"
                 ></date-input>
+                <date-input
+                    label="DoD"
+                    name="dod"
+                    v-model="storedValue.contact.dod"
+                ></date-input>
                 <country-input
                     label="Nationality"
                     name="nationality"
