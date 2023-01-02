@@ -16,12 +16,18 @@
     <value-storage
         inline-template
         :default-stored-value="{
-            addressFinderOpened: false,
+            addressFinderOpened: {{ json_encode(old('found_address_id') !== null) }},
             allAddresses: {{ $addresses }},
             allContacts: {{ $contacts }},
-            newAddresses: [],
-            foundAddresses: [],
-            newContactExtras: [],
+            newAddresses: {{ json_encode(old('new_addresses')) }} || [],
+            foundAddresses: {{ json_encode($addresses->filter(function ($address) {
+                if (null === old('found_address_id')) {
+                    return false;
+                }
+
+                return in_array($address['id'], old('found_address_id'));
+            })->toArray()) }} || [],
+            newContactExtras: {{ json_encode(old('new_contact_extras')) }} || [],
         }"
     >
         <form method="POST" action="{{ route('contacts.store') }}">
@@ -32,26 +38,32 @@
                     <text-input
                         label="Name"
                         name="full_name"
+                        value="{{ old('full_name') }}"
                     ></text-input>
                     <text-input
                         label="AKA"
                         name="nickname"
+                        value="{{ old('nickname') }}"
                     ></text-input>
                     <date-input
                         label="DoB"
                         name="dob"
+                        value="{{ old('dob') }}"
                     ></date-input>
                     <date-input
                         label="DoD"
                         name="dod"
+                        value="{{ old('dod') }}"
                     ></date-input>
                     <country-input
                         label="Nationality"
                         name="nationality"
+                        value="{{ old('nationality') }}"
                     ></country-input>
                     <textarea-input
                         label="Notes"
                         name="notes"
+                        value="{{ old('notes') }}"
                     ></textarea-input>
                 </div>
             </div>
@@ -161,7 +173,7 @@
                             <div class="form-group">
                                 <label class="typo__label" for="found_address_id">Find Addresses</label>
                                 <multiselect
-                                    :allow-empty="false"
+                                    :allow-empty="true"
                                     :clear-on-select="false"
                                     :hide-selected="true"
                                     id="found_address_id"
