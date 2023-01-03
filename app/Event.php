@@ -12,6 +12,11 @@ class Event extends Model
     use SoftDeletes;
 
     const FINAL_YEAR_FOR_BIRTHDAYS = 2146;
+
+    const RECURRENCE_TYPE_DAILY = 'daily';
+    const RECURRENCE_TYPE_MONTHLY = 'monthly';
+    const RECURRENCE_TYPE_WEEKLY = 'weekly';
+    const RECURRENCE_TYPE_YEARLY = 'yearly';
     
     /**
      * The attributes that should be mutated to dates.
@@ -78,5 +83,17 @@ class Event extends Model
                 ->where('name', 'like', $search)
                 ->orWhereRaw("REPLACE(description, ' ', '') LIKE '%" . $search . "%' ");
         });
+    }
+
+    /**
+     * Create a recurring Event
+     * 
+     * @param array $data The Event data that will be used for all recurred Events.
+     * @param string $recurrence How regularly the Event will be recur.
+     * @param Carbon $untilDate When to stop recurring the Event.
+     */
+    public static function createRecurring(array $data, string $recurrence, Carbon $untilDate)
+    {
+        $events = [];
     }
 }
