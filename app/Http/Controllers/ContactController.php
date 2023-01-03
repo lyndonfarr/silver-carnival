@@ -69,14 +69,14 @@ class ContactController extends Controller
         $contact = Contact::create($request->only(['dob', 'dod', 'full_name', 'nationality', 'nickname', 'notes']));
 
         if (!empty($request->new_contact_extras)) {
-            //Use insert instead, setting the contactId on the ContactExtras first.
-            foreach ($request->new_contact_extras as $newContactExtra) {
-                $contactExtra = new ContactExtra([
+            $newContactExtras = array_map(function (array $newContactExtra) use ($contact) {
+                return [
+                    'contact_id' => $contact->id,
                     'type' => $newContactExtra['type'],
                     'value' => $newContactExtra['value'],
-                ]);
-                $contact->contactExtras()->save($contactExtra);
-            }
+                ];
+            }, $request->new_contact_extras);
+            $contact->contactExtras()->insert($newContactExtras);
         }
 
         if (!empty($request->found_address_id)) {
@@ -163,13 +163,14 @@ class ContactController extends Controller
         }
 
         if (!empty($request->new_contact_extras)) {
-            foreach ($request->new_contact_extras as $newContactExtra) {
-                $contactExtra = new ContactExtra([
+            $newContactExtras = array_map(function (array $newContactExtra) use ($contact) {
+                return [
+                    'contact_id' => $contact->id,
                     'type' => $newContactExtra['type'],
                     'value' => $newContactExtra['value'],
-                ]);
-                $contact->contactExtras()->save($contactExtra);
-            }
+                ];
+            }, $request->new_contact_extras);
+            $contact->contactExtras()->insert($newContactExtras);
         }
 
         if (!empty($request->found_address_id)) {
