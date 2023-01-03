@@ -19,6 +19,7 @@
             addressFinderOpened: {{ json_encode(old('found_address_id') !== null) }},
             allAddresses: {{ $addresses }},
             allContacts: {{ $contacts }},
+            contact: {{ $contact }},
             newAddresses: {{ json_encode(old('new_addresses')) }} || [],
             foundAddresses: {{ json_encode($addresses->filter(function ($address) {
                 if (null === old('found_address_id')) {
