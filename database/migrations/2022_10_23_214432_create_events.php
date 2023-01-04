@@ -18,6 +18,8 @@ class CreateEvents extends Migration
             $table->string('name')->nullable(false);
             $table->longText('description')->nullable();
             $table->dateTime('date')->nullable(false);
+            $table->unsignedBigInteger('recurred_event_id')->nullable();
+            $table->foreign('recurred_event_id')->references('id')->on('events')->onDelete('cascade');
             $table->unsignedBigInteger('birthday_contact_id')->nullable();
             $table->foreign('birthday_contact_id')->references('id')->on('contacts')->onDelete('cascade');
             $table->unsignedBigInteger('remembered_contact_id')->nullable();
