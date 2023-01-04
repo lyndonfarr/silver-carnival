@@ -174,6 +174,9 @@ class Event extends Model
             $date = $date->copy();
         }
 
+        /**
+         * @todo see how to still get created etc. fields when using insert.
+         */
         return self::insert($events);
     }
 }
