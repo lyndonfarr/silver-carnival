@@ -25,27 +25,13 @@ class ContactObserver
         }
 
         if (isset($contact->dob)) {
-            $startOfToday = Carbon::now()->set(['hour' => 0, 'minute' => 0, 'second' => 0]);
+            $birthday = [
+                'birthday_contact_id' => $contact->id,
+                'date' => Event::getNextDateForRecurrence($contact->dob, Event::RECURRENCE_TYPE_YEARLY),
+                'name' => "It's {$contact->full_name}s Birthday!",
+            ];
 
-            $currentYear = $startOfToday->year;
-            $year = $contact->dob->addYears($contact->age) > $startOfToday
-                ? $currentYear + 1
-                : $currentYear;
-
-            $birthdays = [];
-
-            while ($year <= Event::FINAL_YEAR_FOR_BIRTHDAYS) {
-                $age = $year - $contact->dob->year;
-                $birthdays[] = [
-                    'birthday_contact_id' => $contact->id,
-                    'date' => Carbon::create($year, $contact->dob->month, $contact->dob->day),
-                    'name' => "Birthday! {$contact->full_name} turns {$age} today.",
-                ];
-
-                $year ++;
-            }
-
-            $contact->birthdays()->insert($birthdays);
+            Event::createRecurring($birthday, Event::RECURRENCE_TYPE_YEARLY, Carbon::create(Event::FINAL_YEAR_FOR_BIRTHDAYS, 12, 31));
         }
 
         if ($contact->getOriginal('dod') !== null && $contact->getOriginal('dod') !== $contact->dod) {
