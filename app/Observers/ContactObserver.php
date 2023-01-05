@@ -31,6 +31,9 @@ class ContactObserver
                 'name' => "It's {$contact->full_name}s Birthday!",
             ];
 
+            /**
+             * @todo fix this up. Missing hours and seconds. Do we want to do the end of the year or just the start of the following year?
+             */
             Event::createRecurring($birthday, Event::RECURRENCE_TYPE_YEARLY, Carbon::create(Event::FINAL_YEAR_FOR_BIRTHDAYS, 12, 31));
         }
 
@@ -43,27 +46,16 @@ class ContactObserver
         }
 
         if (isset($contact->dod)) {
-            $startOfToday = Carbon::now()->set(['hour' => 0, 'minute' => 0, 'second' => 0]);
+            $rememberanceDay = [
+                'date' => Event::getNextDateForRecurrence($contact->dod, Event::RECURRENCE_TYPE_YEARLY),
+                'name' => "Remember {$contact->full_name} today.",
+                'remembered_contact_id' => $contact->id,
+            ];
 
-            $currentYear = $startOfToday->year;
-            $year = $contact->dod->addYears($contact->age) > $startOfToday
-                ? $currentYear + 1
-                : $currentYear;
-
-            $rememberanceDays = [];
-
-            while ($year <= Event::FINAL_YEAR_FOR_BIRTHDAYS) {
-                $age = $year - $contact->dod->year;
-                $rememberanceDays[] = [
-                    'remembered_contact_id' => $contact->id,
-                    'date' => Carbon::create($year, $contact->dod->month, $contact->dod->day),
-                    'name' => "Remember {$contact->full_name} today.",
-                ];
-
-                $year ++;
-            }
-
-            $contact->rememberanceDays()->insert($rememberanceDays);
+            /**
+             * @todo fix this up. Missing hours and seconds. Do we want to do the end of the year or just the start of the following year?
+             */
+            Event::createRecurring($rememberanceDay, Event::RECURRENCE_TYPE_YEARLY, Carbon::create(Event::FINAL_YEAR_FOR_BIRTHDAYS, 12, 31));
         }
     }
 }
